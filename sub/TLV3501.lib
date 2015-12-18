@@ -1,0 +1,193 @@
+* TLV3501
+*****************************************************************************
+* (C) Copyright 2011 Texas Instruments Incorporated. All rights reserved.                                            
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of 
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer.
+*****************************************************************************
+*
+* This model is subject to change without notice. Texas Instruments
+* Incorporated is not responsible for updating this model.
+*
+*****************************************************************************
+*
+** Released by: Analog eLab Design Center, Texas Instruments Inc.
+* Part: TLV3501
+* Date: 13JUN2011
+* Model Type: ALL IN ONE
+* Simulator: PSPICE
+* Simulator Version: 16.0.0.p001
+* EVM Order Number: N/A
+* EVM Users Guide: N/A
+* Datasheet: SBOS321D - MARCH 2005 - REVISED JULY 2005
+*
+* Model Version: 1.0
+*
+*****************************************************************************
+* 
+* Updates:
+*
+* Version 1.0 : 
+* Release to Web
+*
+*****************************************************************************
+*
+* THIS MODEL IS APPLICABLE FOR TLV3501 & TLV3502
+*
+*****************************************************************************
+* BEGIN MODEL TLV3501
+* BEGIN NOTES
+* MODEL FEATURES INCLUDE OUTPUT SWING,
+* OUTPUT CURRENT THRU THE SUPPLY RAILS,
+* TPD VS CLOAD, TPD VS DRIVE LEVEL,
+* TPD VS SUPPLY VOLTAGE, RISE AND FALL
+* TIME, INPUT CAPACITANCE, INPUT BIAS
+* CURRENT, INPUT COMMON MODE VOTAGE
+* RANGE, INPUT HYSTERESIS, HIGH CLOAD
+* EFFECTS, OUTPUT CLAMP DIODES,
+* QUIESCENT SUPPLY VS SUPPLY VOLTAGE,
+* QUIESCENT CURRENT AT SHUTDOWN,
+* SHUTDOWN THRESHOLD, ENABLE TIME,
+* AND DISABLE TIME.
+* MODEL TEMP RANGE IS -40 TO +125 DEG C.
+* NOTE THAT MODEL IS FUNCTIONAL OVER
+* THIS RANGE BUT NOT ALL PARAMETERS
+* TRACK THOSE OF THE REAL PART.
+* END NOTES
+* PINOUT ORDER +IN -IN +V -V OUT EN
+* PINOUT ORDER  3   1   4  2  5   6
+.SUBCKT TLV3501 3 1 4 2 5 6
+M12 7 8 4 4 MCPO
+M13 7 8 2 2 MCNO
+E1 9 10 11 12 1
+E2 10 13 14 13 0.5
+R1 0 10 1E9
+R2 0 10 1E9
+C1 8 15 0.53E-12
+R3 8 9 800
+E3 15 13 7 13 1
+R5 15 8 1E5
+M1 11 3 16 16 MCI
+M2 17 1 16 16 MCI
+I1 16 13 50E-6
+M4 17 17 18 18 MCP
+M3 11 11 18 18 MCP
+R6 17 11 1E7
+M5 19 17 18 18 MCP
+M6 12 11 18 18 MCP
+M7 19 19 20 20 MCN
+M8 19 12 20 20 MCC
+M9 12 19 20 20 MCC
+M10 12 12 20 20 MCN
+M11 20 20 13 13 MCN
+R8 21 7 18
+C3 12 11 0.01F
+C4 11 17 110E-15
+E4 22 0 3 0 1
+E5 23 0 1 0 1
+R9 24 23 1E3
+R10 25 22 1E3
+M14 26 25 13 13 MCNV
+M15 27 25 14 14 MCPV
+R11 26 14 1E6
+R12 13 27 1E6
+E6 18 14 28 14 1
+V28 28 2 6.5
+M16 29 26 13 13 MCN
+M17 29 26 14 14 MCP
+M18 8 29 14 14 MCPO
+M19 8 27 14 14 MCPO
+M20 30 24 13 13 MCNV
+M21 31 24 14 14 MCPV
+R15 30 14 1E6
+R16 13 31 1E6
+M22 32 30 13 13 MCN
+M23 32 30 14 14 MCP
+M24 8 32 14 14 MCPO
+M25 8 31 14 14 MCPO
+E8 33 5 34 0 -10
+E9 35 21 34 0 10
+M26 21 36 5 37 MNSW
+M27 5 38 21 39 MPSW
+R17 0 39 1E12
+R18 37 0 1E12
+V29 36 33 5
+V30 38 35 -5
+R19 0 35 1E12
+R20 0 33 1E12
+E10 14 0 4 0 1
+M28 8 40 14 14 MCPO
+M29 40 34 0 0 MCNS
+R21 40 14 1E6
+M45 41 42 0 0 NEN L=3U W=3000U
+R133 41 43 1E6
+V52 43 0 1
+C27 6 0 1E-12
+V53 41 44 1.111E-6
+R134 0 44 1E12
+C34 43 41 1E-18
+M50 45 46 0 0 NEN L=3U W=300U
+M51 47 45 0 0 NEN L=3U W=300U
+R299 45 43 1E4
+R300 47 43 1E4
+C36 43 45 2.1E-12
+C106 43 47 14E-12
+M47 46 6 14 14 PEN L=6U W=60U
+R301 0 46 1E4
+C107 5 0 0.5E-12
+R302 48 34 1E3
+C108 34 0 2E-12
+E11 48 0 44 0 1
+E12 13 0 2 0 1
+M52 49 50 2 2 MNIQ
+R303 49 4 28E3
+G1 4 2 51 0 3.05E-3
+V55 52 48 -1
+E13 53 0 52 0 -1
+R304 0 52 1E12
+R305 0 52 1E12
+R306 0 48 1E12
+R307 0 48 1E12
+V56 53 51 3.111E-6
+R308 0 51 1E12
+R309 0 53 1E12
+I2 4 2 2E-6
+D1 54 0 DD
+I3 0 54 1E-3
+V57 54 55 0.65
+R310 0 55 1E6
+E14 42 47 55 0 0.9
+R311 47 42 1E6
+R312 13 16 1E12
+C109 16 13 1E-16
+C110 3 0 2E-12
+C111 1 0 2E-12
+I4 3 0 2E-12
+I5 1 0 2E-12
+R313 0 6 1E12
+E15 50 2 51 0 1
+D2 5 4 DC
+D3 2 5 DC
+R314 0 50 1E12
+.MODEL DD D
+.MODEL DC D RS=10
+.MODEL MCI NMOS KP=8600U VTO=2
+.MODEL MCC NMOS KP=215U VTO=2
+.MODEL MCN NMOS KP=200U VTO=2
+.MODEL MCP PMOS KP=200U VTO=-2
+.MODEL MCNV NMOS KP=2000U VTO=-0.27
+.MODEL MCPV PMOS KP=2000U VTO=0.28
+.MODEL MCNO NMOS KP=35000U VTO=2
+.MODEL MCPO PMOS KP=35000U VTO=-2
+.MODEL MNSW NMOS KP=35000U VTO=2.5 IS=1E-18
+.MODEL MPSW PMOS KP=35000U VTO=-2.5 IS=1E-18
+.MODEL MCNS NMOS KP=200U VTO=0.5
+.MODEL NEN NMOS KP=200U VTO=0.5 IS=1E-18
+.MODEL PEN PMOS KP=200U VTO=-1.2 IS=1E-18
+.MODEL MNIQ NMOS KP=35000U VTO=0.5 IS=1E-18
+.ENDS
+* END MODEL TLV3501

@@ -1,0 +1,47 @@
+Version 4
+SymbolType CELL
+RECTANGLE Normal 224 239 -224 -256
+TEXT 0 0 Center 2 LT
+WINDOW 0 0 -48 Center 2
+WINDOW 3 0 53 Center 2
+SYMATTR Value LTC4267-1
+SYMATTR Prefix X
+SYMATTR SpiceModel LTC4267-1.sub
+SYMATTR Value2 LTC4267-1
+SYMATTR Description Power over Ethernet IEEE 802.3af PD Interface with Integrated Switching Regulator
+PIN 224 192 RIGHT 8
+PINATTR PinName Ith/Run
+PINATTR SpiceOrder 1
+PIN 224 112 RIGHT 8
+PINATTR PinName PGND
+PINATTR SpiceOrder 2
+PIN 224 32 RIGHT 8
+PINATTR PinName Ngate
+PINATTR SpiceOrder 3
+PIN 224 -48 RIGHT 8
+PINATTR PinName Pvcc
+PINATTR SpiceOrder 4
+PIN 224 -128 RIGHT 8
+PINATTR PinName Rclass
+PINATTR SpiceOrder 5
+PIN 224 -208 RIGHT 8
+PINATTR PinName VportN
+PINATTR SpiceOrder 7
+PIN -224 -208 LEFT 8
+PINATTR PinName Pout
+PINATTR SpiceOrder 10
+PIN -224 -128 LEFT 8
+PINATTR PinName _PWRGD
+PINATTR SpiceOrder 11
+PIN -224 -48 LEFT 8
+PINATTR PinName SigDisA
+PINATTR SpiceOrder 12
+PIN -224 32 LEFT 8
+PINATTR PinName VportP
+PINATTR SpiceOrder 13
+PIN -224 112 LEFT 8
+PINATTR PinName Sense
+PINATTR SpiceOrder 14
+PIN -224 192 LEFT 8
+PINATTR PinName Vfb
+PINATTR SpiceOrder 16

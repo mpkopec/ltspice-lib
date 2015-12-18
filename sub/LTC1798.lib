@@ -1,0 +1,20 @@
+* Copyright © Linear Technology Corp. 2004.  All rights reserved.
+*
+.subckt LTC1798 1 2 3 4
+S1 4 2 N001 4 T
+S2 1 4 4 N001 B
+A1 3 1 0 0 0 0 N001 0 OTA G={Avol/Rout} Ref=2.385 Iout={slew*Cout} Cout={Cout} en={en} enk={enk} in={in} ink={ink} Vhigh=1e308 Vlow=-1e308
+C3 4 1 1p
+C4 2 4 1p
+R2 N001 1 {2*Rout} noiseless
+R1 2 N001 {2*Rout} noiseless
+G1 0 N001 1 N001 table(0 0 10 {2*slew*Cout})
+G2 N001 0 N001 2 table(0 0 10 {2*slew*Cout})
+R3 3 1 238.5Meg
+.param Rout=100Meg
+.param Cout={Avol/GBW/2/pi/Rout}
+.model T SW(Ron=200 Roff=2G Vt=0 Vh=-.1 Vser={Rail} ilimit=15m noiseless)
+.param Avol=1Meg GBW=100K Slew=100K rail=0
+.param en=0 enk=0 in=0 ink=0
+.model B SW(Ron=200 Roff=2G Vt=0 Vh=-.1 Vser={Rail} ilimit=3m noiseless)
+.ends LTC1798

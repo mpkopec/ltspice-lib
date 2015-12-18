@@ -1,0 +1,433 @@
+* Copyright © Linear Technology Corp. 2014.  All rights reserved.
+*
+.subckt LT1580-2.5 1 2 3 4 5 6
+Q1 C N003 4 0 NOUT temp=27
+Q2 N002 3 N005 0 N temp=27
+D1 6 N002 DBG1
+C1 N002 3 100f
+C2 N002 1 50p Rser=100k
+C3 6 N002 200f Rpar=233Meg
+C4 1 N005 50p Rser=10 Rpar=10.974k
+C5 3 N005 100f
+C6 6 N005 200f
+G1 3 X N002 3 1µ
+C7 X 3 500f Rpar=1Meg
+C8 6 X 150f
+R3 5 C 61m
+S1 3 X 5 C SCL
+G3 N002 1 5 C 72n
+B1 6 N003 I=(.5+.5*tanh((V(C,4)-115m)/10m))*dnlim(310m*V(X,3),1.69m, 100u)
+D2 N003 4 DBETA
+R1 3 1 208.732
+R2 1 2 207
+.model N NPN(BF=125 Is=1e-16)
+.model NOUT NPN (BF=280 IKF=9.5  IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBETA D(Ron=1 Roff=1Meg vfwd=500m epsilon=100m ilimit=4m)
+.model DBG1  D(Ron=100 Roff=1G vfwd=600m epsilon=400m ilimit=50u)
+.model SCL SW(Ron=1 Roff=100Meg vt=489m vh=-50m)
+.model DMINI D(Ron=100 Roff=1Meg vfwd=500m epsilon=100m  ilimit=3m)
+.ends LT1580-2.5
+*
+.subckt LT1580 1 2 3 4 5 6
+Q1 C N003 4 0 NOUT temp=27
+Q2 N002 3 N005 0 N temp=27
+D1 6 N002 DBG1
+C1 N002 3 100f
+C2 N002 1 50p Rser=100k
+C3 6 N002 200f Rpar=233Meg
+C4 1 N005 50p Rser=10 Rpar=10.974k
+C5 3 N005 100f
+C6 6 N005 200f
+G1 3 X N002 3 1µ
+C7 X 3 500f Rpar=1Meg
+C8 6 X 150f
+R3 5 C 61m
+S1 3 X 5 C SCL
+G3 N002 1 5 C 72n
+B1 6 N003 I=(.5+.5*tanh((V(C,4)-115m)/10m))*dnlim(310m*V(X,3),1.69m, 100u)
+D2 N003 4 DBETA
+.model N NPN(BF=125 Is=1e-16)
+.model NOUT NPN (BF=280 IKF=9.5  IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBETA D(Ron=1 Roff=1Meg vfwd=500m epsilon=100m ilimit=4m)
+.model DBG1  D(Ron=100 Roff=1G vfwd=600m epsilon=400m ilimit=50u)
+.model SCL SW(Ron=1 Roff=100Meg vt=489m vh=-50m)
+.model DMINI D(Ron=100 Roff=1Meg vfwd=500m epsilon=100m  ilimit=3m)
+.ends LT1580
+*
+.subckt LT1581-2.5 1 2 3 4 5 6
+R4 1 2 207
+Q1 C N003 4 0 NOUT temp=27
+Q2 N002 3 N005 0 N temp=27
+D1 6 N002 DBG1
+C1 N002 3 100f
+C2 N002 1 50p Rser=100k
+C3 6 N002 200f Rpar=195Meg
+C4 1 N005 50p Rser=10 Rpar=9.0684k
+C5 3 N005 100f
+C6 6 N005 200f
+G1 3 X N002 3 1µ
+C7 X 3 500f Rpar=1Meg
+C8 6 X 150f
+R5 5 C 30.8m
+S1 3 X 5 C SCL
+G2 N002 1 5 C 121n
+B1 6 N003 I=(.5+.5*tanh((V(C,4)-130m)/10m))*dnlim(750m*V(X,3),1.05m,100u)
+D2 N003 4 DBETA
+R1 3 1 209.111
+.model N NPN(BF=125 Is=1e-16)
+.model NOUT NPN (BF=280 IKF=16  IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBETA D(Ron=1 Roff=1Meg vfwd=500m epsilon=100m ilimit=4m)
+.model DBG1  D(Ron=100 Roff=1G vfwd=630m epsilon=400m ilimit=60u)
+.model SCL SW(Ron=1 Roff=100Meg vt=339m vh=-50m)
+.model DMINI D(Ron=100 Roff=1Meg vfwd=500m epsilon=100m  ilimit=3m)
+.ends LT1581-2.5
+*
+.subckt LT1581 1 2 3 4 5 6
+Q1 C N003 4 0 NOUT temp=27
+Q2 N002 3 N005 0 N temp=27
+D1 6 N002 DBG1
+C1 N002 3 100f
+C2 N002 1 50p Rser=100k
+C3 6 N002 200f Rpar=195Meg
+C4 1 N005 50p Rser=10 Rpar=9.0684k
+C5 3 N005 100f
+C6 6 N005 200f
+G1 3 X N002 3 1µ
+C7 X 3 500f Rpar=1Meg
+C8 6 X 150f
+R3 5 C 30.8m
+S1 3 X 5 C SCL
+G3 N002 1 5 C 121n
+B1 6 N003 I=(.5+.5*tanh((V(C,4)-130m)/10m))*dnlim(750m*V(X,3),1.05m,100u)
+D2 N003 4 DBETA
+.model N NPN(BF=125 Is=1e-16)
+.model NOUT NPN (BF=280 IKF=16  IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBETA D(Ron=1 Roff=1Meg vfwd=500m epsilon=100m ilimit=4m)
+.model DBG1  D(Ron=100 Roff=1G vfwd=630m epsilon=400m ilimit=60u)
+.model SCL SW(Ron=1 Roff=100Meg vt=339m vh=-50m)
+.model DMINI D(Ron=100 Roff=1Meg vfwd=500m epsilon=100m  ilimit=3m)
+.ends LT1581
+*
+.subckt LT1584-3.3 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 254
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),uplim(53m,71.9m-6.4m*V(3,2),1m),5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1584-3.3
+*
+.subckt LT1584-3.38 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),uplim(53m,71.9m-6.4m*V(3,2),1m),5m)
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 263.9
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1584-3.38
+*
+.subckt LT1584-3.45 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 272.5
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),uplim(53m,71.9m-6.4m*V(3,2),1m),5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1584-3.45
+*
+.subckt LT1584-3.6 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),uplim(53m,71.9m-6.4m*V(3,2),1m),5m)
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 291.1
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1584-3.6
+*
+.subckt LT1584 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 1 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 1 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),uplim(53m,71.9m-6.4m*V(3,2),1m),5m)
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=100)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1584
+*
+.subckt LT1585-3.3 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 254
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),31.35m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1585-3.3
+*
+.subckt LT1585-3.38 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 263.9
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),31.35m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1585-3.38
+*
+.subckt LT1585-3.45 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 272.5
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),31.35m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1585-3.45
+*
+.subckt LT1585-3.6 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 291.1
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),31.35m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1585-3.6
+*
+.subckt LT1585 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 1 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 1 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),31.35m,5m)
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1585
+*
+.subckt LT1587-3.3 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 254
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),24.8m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1587-3.3
+*
+.subckt LT1587-3.38 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 263.9
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),24.8m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1587-3.38
+*
+.subckt LT1587-3.45 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 272.5
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),24.8m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1587-3.45
+*
+.subckt LT1587-3.6 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 N007 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 N007 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+R2 N004 N007 156
+R3 N007 1 291.1
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),24.8m,5m)
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1587-3.6
+*
+.subckt LT1587 1 2 3
+Q1 3 N002 N004 0 NOUT temp=27
+Q2 N003 N004 N006 0 N temp=27
+D1 3 N003 DBG1
+C2 N003 N004 100f
+C4 N003 1 30p Rser=100k
+C3 3 N003 200f Rpar=250Meg
+C1 1 N006 100p Rser=10 Rpar=10k
+C5 N004 N006 100f
+B1 3 N002 I=uplim(dnlim(250m*V(X,2),13u,10u),24.8m,5m)
+R4 2 N004 90µ
+C6 3 N006 200f
+G1 N004 X N003 N004 1µ
+C8 X N004 500f Rpar=1Meg
+C7 3 X 150f
+.model N NPN(BF=125 Is=1.13e-16)
+.model NOUT NPN (BF=150 IS=1e-12 Cjc=100p Cje=100p VAF=1000)
+.model DBG1  D(Ron=100 Roff=1G vfwd=650m epsilon=400m ilimit=55u)
+.ends LT1587

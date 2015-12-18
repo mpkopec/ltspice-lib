@@ -1,0 +1,264 @@
+* Copyright (c) 1998-2015 Linear Technology Corporation.  All rights reserved.
+*
+.subckt LTC2865 1 2 3 4 5 6 7 8 9 10 11 12
+MZPDRV 9 N002 N005 N005 PDRV
+MZNDRV N013 N010 N017 N017 NDRV
+G1 0 vrefGR 12 6 1m
+C1 vrefGR 0 100f Rpar=500
+C2 N006 0 550f Rpar=1g
+S1 VCCGR N006 DI3 0 SDIN
+S2 N006 0 0 DI3 SDIN
+D1 N006 vrefGR DCLP
+S3 12 N002 N006 vrefGRH SDPU
+S4 N002 6 vrefGRL N006 SDPD
+G3 0 VCCGR 12 6 10m
+C4 VCCGR 0 100f Rpar=100
+C7 N018 0 550f Rpar=1g
+S9 VCCGR N018 DI3 0 SDIN
+S10 N018 0 0 DI3 SDIN
+D3 N018 vrefGR DCLN
+S11 12 N010 N018 vrefGRH SDNU
+S12 N010 6 vrefGRL N018 SDND
+C8 N010 6 1p Rpar=1Meg
+C6 12 9 1p Rpar=100meg
+C5 9 6 1p Rpar=100meg
+C17 N002 9 200f
+C18 N013 N010 200f
+S17 12 N011 DI3 0 SDIN2
+S18 N011 6 0 DI3 SDIN2
+C20 N011 6 1p Rpar=1g
+C3 12 N002 1p Rpar=1Meg
+D7 12 N015 DBIAS1
+C22 N012 N011 200f Rpar=1.5Meg
+G2 0 N008 vref N012 10m
+D9 N008 N009 DPPD
+D10 N014 N008 DNPU
+D11 12 N004 DP
+D12 N015 6 DN
+S20 N002 N004 0 _TXslow SMODE1
+D13 N004 6 DBIAS1
+S23 0 N014 _TXslow2 0 SMODE3
+S24 0 N009 _TXslow2 0 SMODE3
+C26 N014 0 1p
+C27 0 N009 1p
+C24 N015 6 1p
+C25 12 N004 1p
+A2 N009 0 6 6 6 6 N004 6 OTA g=10m linear vlow=0 vhigh=1e308
+A4 N014 0 12 12 12 12 N015 12 OTA g=10m linear vlow=-1e308 vhigh=0
+G5 6 N002 VIlimUZ IlimUPZ 100m vto=0 dir=1
+I1 0 IlimUPZ 15µ
+S19 IlimUPZ 0 12 9 SIout
+G12 0 VIlimDZ N017 6 3.8m
+C31 VIlimDZ 0 100f Rpar=10k
+I2 0 IlimDNZ 15µ
+S22 IlimDNZ 0 9 6 SIout
+G13 N010 12 VIlimDZ IlimDNZ 100m vto=0 dir=1
+C9 N013 6 1p Rpar=10Meg
+C11 N017 6 1p Rpar=2.6
+C12 IlimUPZ 0 10p
+C13 IlimDNZ 0 10p
+G4 0 VIlimUZ 12 N005 1m
+C14 VIlimUZ 0 100f Rpar=10k
+S6 12 N010 SPDZ 0 SPullDwn
+D2 12 N005 D1way
+S5 12 N005 SRONZ 0 SREV
+A3 3 vlref 0 0 0 0 N020 0 SCHMITT vt=0 vh=50m trise=10n
+A5 DE 0 0 0 _SLO _TXfast 0 0 AND trise=5n
+A6 _DE 0 0 0 _SLO 0 _TXslow 0 OR trise=50n tfall=500n
+S7 6 N010 _DE 0 Soff
+S8 N002 12 _DE 0 Soff
+G14 0 SRONZ 12 9 20µ
+C10 SRONZ 0 100f Rpar=2Meg
+I3 0 SRONZ 6µ
+S13 0 SRONZ 0 DE Soff2
+D4 SRONZ 0 DLSR
+G15 0 SPDZ 9 12 1µ
+C15 SPDZ 0 100f Rpar=2Meg
+I4 SPDZ 0 4µ
+S14 0 SPDZ 0 DE Soff2
+D6 SPDZ 0 DLSR
+C16 5 vlref 1p Rpar=1Meg
+C30 vlref 6 1p Rpar=1Meg
+G16 0 DI3 DI2 0 table=(.49 -1u, .51 1u)
+C32 DI3 0 1f Rpar=1Meg
+A1 7 vlref 0 0 0 0 _SLO 0 SCHMITT vt=0 vh=50m trise=100n
+C33 N008 0 1p Rpar=100
+S15 N015 N010 0 _TXslow SMODE1
+C34 12 N005 1p
+C35 N012 9 .5p
+G17 0 vref 12 0 1m
+C19 vref 0 100f Rpar=500
+G18 0 vref 6 0 1m
+MZPDRV1 8 N023 N025 N025 PDRV
+MZNDRV1 N034 N030 N037 N037 NDRV
+C23 N026 0 550f Rpar=1g
+S16 VCCGR N026 0 DI3 SDIN
+S21 N026 0 DI3 0 SDIN
+D8 N026 vrefGR DCLP
+S25 12 N023 N026 vrefGRH SDPU
+S26 N023 6 vrefGRL N026 SDPD
+C37 N042 0 550f Rpar=1g
+S27 VCCGR N042 0 DI3 SDIN
+S28 N042 0 DI3 0 SDIN
+D14 N042 vrefGR DCLN
+S29 12 N030 N042 vrefGRH SDNU
+S30 N030 6 vrefGRL N042 SDND
+C38 N030 6 1p Rpar=1Meg
+C39 12 8 1p Rpar=100meg
+C40 8 6 1p Rpar=100meg
+C41 N023 8 200f
+C42 N034 N030 200f
+S31 12 N032 0 DI3 SDIN2
+S32 N032 6 DI3 0 SDIN2
+C43 N032 6 1p Rpar=1g
+C44 12 N023 1p Rpar=1Meg
+D16 12 N036 DBIAS1
+C46 N033 N032 200f Rpar=1.5Meg
+G6 0 N028 vref N033 10m
+D17 N028 N029 DPPD
+D18 N035 N028 DNPU
+D19 12 N024 DP
+D20 N036 6 DN
+S33 N023 N024 0 _TXslow SMODE1
+D21 N024 6 DBIAS1
+S34 0 N035 _TXslow2 0 SMODE3
+S35 0 N029 _TXslow2 0 SMODE3
+C47 N035 0 1p
+C48 0 N029 1p
+C50 N036 6 1p
+C51 12 N024 1p
+A7 N029 0 6 6 6 6 N024 6 OTA g=10m linear vlow=0 vhigh=1e308
+A8 N035 0 12 12 12 12 N036 12 OTA g=10m linear vlow=-1e308 vhigh=0
+G20 6 N023 VIlimUY IlimUPY 100m vto=0 dir=1
+I5 0 IlimUPY 15µ
+S36 IlimUPY 0 12 8 SIout
+G21 0 VIlimDY N037 6 3.8m
+I6 0 IlimDNY 15µ
+S37 IlimDNY 0 8 6 SIout
+G22 N030 12 VIlimDY IlimDNY 100m vto=0 dir=1
+C54 N037 6 1p Rpar=2.6
+C55 IlimUPY 0 10p
+C56 IlimDNY 0 10p
+G23 0 VIlimUY 12 N025 1m
+S38 12 N030 SPDY 0 SPullDwn
+D22 12 N025 D1way
+S39 12 N025 SRONY 0 SREV
+S40 6 N030 _DE 0 Soff
+S41 N023 12 _DE 0 Soff
+G24 0 SRONY 12 8 20µ
+C58 SRONY 0 100f Rpar=2Meg
+I7 0 SRONY 6µ
+S42 0 SRONY 0 DE Soff2
+D23 SRONY 0 DLSR
+G25 0 SPDY 8 12 1µ
+C59 SPDY 0 100f Rpar=2Meg
+I8 SPDY 0 4µ
+S43 0 SPDY 0 DE Soff2
+D24 SPDY 0 DLSR
+C60 N028 0 1p Rpar=100
+S44 N036 N030 0 _TXslow SMODE1
+C61 12 N025 1p
+C62 N033 8 .5p
+D5 9 N013 DNout
+D15 8 N034 DNout
+C45 N034 6 1p Rpar=10Meg
+C49 9 N013 .5p
+C53 8 N034 .5p
+C63 N005 9 1p
+C64 N013 N017 1p
+C65 N025 8 1p
+C66 N034 N037 1p
+A9 _Txfast 0 vrefGR vrefGR vrefGR vrefGR vrefGRH vrefGR SCHMITT vt=.5 trise=5n vlow=0 vhigh=10
+A10 0 _Txfast vrefGR vrefGR vrefGR vrefGR vrefGRL vrefGR SCHMITT vt=-.5 trise=5n vlow=-10 vhigh=0
+A11 2 vlref 0 0 0 N039 0 0 SCHMITT vt=0 vh=50m trise=10n
+A12 DEF 0 0 0 0 0 N022 0 BUF Trise=12u Tfall=40n
+S46 N021 DEF ON 0 SDelay
+A13 N021 0 0 0 N022 _DE DE 0 OR trise=10n
+C28 N021 0 1p Rpar=1k
+A14 _DE 0 0 0 _SLO 0 _TXslow2 0 OR Rhigh=1k Rlow=600k Cout=1p
+A16 5 N057 0 0 0 0 FailSafe 0 SRFLOP trise=6u tfall=10n
+A17 N044 0 N047 0 FailSafe 0 N050 0 OR trise=1n ref=.5 vlow=-1 vhigh=1 tripdt=1n
+A18 11 10 0 0 0 N056 0 0 SCHMITT vt=-62.5m vh=12.5m trise=10n
+S45 5 1 N050 N051 SRO
+S47 1 6 N058 N050 SRO
+C67 5 1 500f
+C68 1 6 500f
+A19 N060 0 N061 0 _RE 0 Disable 0 OR trise=5n tripdt=2n
+A20 Disable 0 0 0 0 0 N051 0 BUF ref=.5 trise=5n vlow=0 vhigh=1.5
+A21 Disable 0 0 0 0 N058 0 0 BUF ref=.5 trise=5n vlow=-1.5 vhigh=0
+A22 N040 0 0 0 0 0 N043 0 BUF Trise=10u Tfall=5n
+S48 N041 N040 ON 0 SDelay
+A23 N041 0 0 0 N043 _RE 0 0 OR trise=5n
+C70 N041 0 1p Rpar=1k
+G7 0 N059 11 6 .5m
+G8 0 N059 10 6 .5m
+C71 N059 0 100f Rpar=1k
+A24 N059 0 0 0 0 0 N060 0 SCHMITT vt=26 vh=100m trise=10n
+A25 0 N059 0 0 0 0 N061 0 SCHMITT vt=26 vh=100m trise=10n
+S49 6 12 N040 0 SRPOW
+S51 6 12 DEF _SLO STPOW2
+A15 N045 N049 0 0 0 0 N047 0 SRFLOP trise=1n ref=.48 vlow=0 vhigh=1
+A26 11 10 0 0 0 0 N048 0 SCHMITT vt=75m vh=0 trise=1n
+A27 0 0 N048 0 N045 0 N046 0 DFLOP trise=10n tfall=1n
+A28 N046 0 0 0 0 0 N045 0 BUF trise=76n tfall=5n
+A29 10 11 0 0 0 0 N055 0 SCHMITT vt=75m vh=0 trise=1n
+A30 0 0 N055 0 N049 0 N052 0 DFLOP trise=10n tfall=1n
+A31 N052 0 0 0 0 0 N049 0 BUF trise=76n tfall=5n
+A32 11 10 0 0 0 0 N044 0 SCHMITT vt=75m vh=0 trise=500u tfall=1n
+A33 _RE 0 0 0 _DE ON 0 0 AND trise=5n tfall=80n
+S50 6 12 DEF 0 STPOW1
+D25 6 5 ESDL
+D26 6 4 ESDL
+D27 6 3 ESDL
+D28 6 7 ESDL
+D29 6 2 ESDL
+D30 6 11 ESDH
+D31 6 10 ESDH
+C29 11 6 500f Rpar=112k
+C36 10 6 500f Rpar=112k
+D32 6 8 ESDH
+D33 6 1 ESDL
+D34 6 9 ESDH
+C57 VIlimUY 0 100f Rpar=10k
+C52 VIlimDY 0 100f Rpar=10k
+A34 N056 0 0 0 _RE 0 N057 0 OR trise=5n tripdt=2n
+ADI 4 vlref 0 0 0 0 DI2 0 SCHMITT vt=0 vh=50m trise=10n
+AVL 5 6 0 0 0 0 VLgood 0 SCHMITT vt=0.95 vh=50m trise=10n
+ADE N020 0 0 0 VLgood 0 DEF 0 AND trise=10n
+ARE N039 0 0 0 VLgood 0 N040 0 AND trise=5n
+ASX DE _RE _SLO 0 0 SLex 0 0 OR trise=5n
+SLX 6 12 SLex 0 SLEXPOW
+.model PDRV VDMOS(vto=-700m kp=400m mtriode=.3 rd=500m lambda=.1 subthres=5u  is=0 pchan)
+.model NDRV VDMOS(vto=700m kp=210m mtriode=.7 rd=1.2 lambda=.05 subthres=5u is=0)
+.model DCLP  D(Ron=10 Roff=1g vfwd=600m epsilon=100m vrev=500m epsilon=100m)
+.model SDIN SW(Ron=100k Roff=1g vt=-100m vh=-200m)
+.model SDIN2 SW(Ron=1k Roff=1g vt=-100m vh=-200m)
+.model SDPU SW(Ron=5k Roff=1G vt=0 vh=-100m)
+.model SDPD SW(Ron=4k Roff=1G vt=0 vh=-100m)
+.model DCLN  D(Ron=10 Roff=1g vfwd=550m epsilon=100m vrev=490m epsilon=100m)
+.model SDNU SW(Ron=8k Roff=1G vt=0 vh=-100m)
+.model SDND SW(Ron=4k Roff=1G vt=0 vh=-100m)
+.model DP D(Ron=150k Roff=1g vfwd=660m epsilon=500m)
+.model DN D(Ron=400k Roff=1g vfwd=550m epsilon=900m)
+.model ESDL D(Ron=60 Roff=1g vfwd=700m epsilon=500m vrev=10 revepsilon=500m)
+.model ESDH D(Ron=60 Roff=1g vfwd=62 epsilon=1 vrev=62 revepsilon=1)
+.model SIout  SW(Ron=20k Roff=1Meg vt=30 vh=-20)
+.model SMODE1 SW(level=2 Ron=1 Roff=1g vt=-.5 vh=-.2)
+.model SMODE3 SW(Ron=.1 Roff=1k vt=.5 vh=-.5)
+.model Sdelay SW(Ron=1 Roff=1g vt=.5 vh=-.2)
+.model SREV SW(level=2 Ron=.1 Roff=10Meg vt=1 vh=-.1 ilimit=50m oneway epsilon=100m)
+.model D1way  D(Ron=10 Roff=10 vfwd=0 vrev=0 revilimit=1u)
+.model SPullDwn SW(Ron=100 Roff=1g vt=1 vh=-1 ilimit=10m)
+.model Soff SW(Ron=1 Roff=1Meg vt=.5 vh=-.2)
+.model Soff2 SW(Ron=1 Roff=2Meg vt=-.5 vh=-.2)
+.model DLSR D(Ron=1 Roff=10Meg vfwd=2 epsilon=500m vrev=2 revepsilon=500m)
+.model SRPOW SW(Ron=100 Roff=1g vt=.5 vh=-.4 ilimit=793u)
+.model STPOW1 SW(Ron=100 Roff=1g vt=.5 vh=-.4 ilimit=62u)
+.model STPOW2 SW(Ron=10 Roff=1g vt=.5 vh=-.2 ilimit=2.2m)
+.model SLEXPOW SW(Ron=100 Roff=1g vt=.5 vh=-.4 ilimit=260u)
+.model SRO SW(Ron=125 Roff=1g vt=-100m vh=-200m ilimit=20m)
+.model DPPD D(ron=200k Roff=100g vfwd=-160m epsilon=100m ilimit=10u)
+.model DNPU D(ron=200k Roff=100g vfwd=-160m epsilon=100m ilimit=10u)
+.model DBIAS1 D(Ron=100k Roff=1g vfwd=100m epsilon=100m ilimit=1u)
+.model DNout D(Ron=1.1 Roff=1g vfwd=450m epsilon=500m)
+.ends LTC2865

@@ -1,0 +1,35 @@
+Version 4
+SymbolType BLOCK
+RECTANGLE Normal 111 160 -112 -208
+TEXT 0 0 Left 2 LT
+WINDOW 3 1 81 Center 2
+WINDOW 0 0 -144 Center 2
+SYMATTR Value LTC4071
+SYMATTR Prefix X
+SYMATTR SpiceModel LTC4071.sub
+SYMATTR Value2 LTC4071
+SYMATTR Description Li-Ion/Polymer Shunt Battery Charger System with Low Battery Disconnect
+PIN -112 -32 LEFT 8
+PINATTR PinName NTCbias
+PINATTR SpiceOrder 1
+PIN -112 32 LEFT 8
+PINATTR PinName NTC
+PINATTR SpiceOrder 2
+PIN -112 -160 LEFT 8
+PINATTR PinName ADJ
+PINATTR SpiceOrder 3
+PIN 112 -48 RIGHT 8
+PINATTR PinName HBO
+PINATTR SpiceOrder 4
+PIN 0 160 BOTTOM 8
+PINATTR PinName GND
+PINATTR SpiceOrder 6
+PIN 112 -128 RIGHT 8
+PINATTR PinName BAT
+PINATTR SpiceOrder 7
+PIN 0 -208 TOP 8
+PINATTR PinName Vcc
+PINATTR SpiceOrder 8
+PIN -112 -96 LEFT 8
+PINATTR PinName LBSEL
+PINATTR SpiceOrder 5

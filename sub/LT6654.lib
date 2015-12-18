@@ -1,0 +1,343 @@
+* Copyright (c) Linear Technology Corp. 2014.  All rights reserved.
+*
+.subckt LT6654-1.25 1 2 3
+B2 N005 0 I=10u*(V(OUTS,GNDS)-1.24999)
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=3.2u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 13.5m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=2.1 asym isource=24u Isink=-50n Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G3 2 N005 2 1 15p
+G6 0 VDO OUTS 3 80m
+G7 0 N003 VDO 0 10m vto=-250m dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+C9 VDO 0 100f Rpar=20k noiseless
+C11 GNDS 1 1p
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=9.5 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-1.25
+*
+.subckt LT6654-2.048 1 2 3
+B2 N005 0 I=10u*(V(OUTS,GNDS)-2.04799)
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=4.5u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 16m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+A6 OUTS 3 0 0 0 0 N011 0 OTA g=1 asym ref=-400n isource=100n Isink=-80n Rout=1Meg Vlow=-1e308 Vhigh=1e308
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=.7 asym isource=4.7u Isink=-.1u Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G4 2 N005 2 0 8.2p
+G3 2 N005 2 1 8.2p
+G6 0 VDO OUTS 3 .16
+G7 0 N003 VDO N011 10m vto=0 dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u in=255f/(1+1m*dnlim(freq-50k,1,1k)) Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+G5 0 VDO 3 2 10m vto=120m dir=1
+C9 VDO 0 100f Rpar=20k noiseless
+C11 GNDS 1 1p
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=6 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-2.048
+*
+.subckt LT6654-2.5 1 2 3
+B2 N005 0 I=10u*(V(OUTS,GNDS)-2.49999)
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=5.2u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 17m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+A6 OUTS 3 0 0 0 0 N011 0 OTA g=1 asym ref=-400n isource=100n Isink=-80n Rout=1Meg Vlow=-1e308 Vhigh=1e308
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=.7 asym isource=4.7u Isink=-.1u Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G3 2 N005 2 1 30p
+G6 0 VDO OUTS 3 .16
+G7 0 N003 VDO N011 10m vto=0 dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u in=400f/(1+1m*dnlim(freq-50k,1,1k)) Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+G5 0 VDO 3 2 10m vto=120m dir=1
+C11 GNDS 1 1p
+C9 VDO 0 100f Rpar=20k noiseless
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=4 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-2.5
+*
+.subckt LT6654-3.3 1 2 3
+B2 N005 0 I=7.76u*(V(OUTS,GNDS)-3.29998)
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=4.5u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 30.8m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+A6 OUTS 3 0 0 0 0 N011 0 OTA g=1 asym ref=-400n isource=100n Isink=-80n Rout=1Meg Vlow=-1e308 Vhigh=1e308
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=.7 asym isource=4.7u Isink=-.1u Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G3 2 N005 2 1 26.2p
+G6 0 VDO OUTS 3 .16
+G7 0 N003 VDO N011 10m vto=0 dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u in=320f/(1+1m*dnlim(freq-50k,1,1k)) Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+G5 0 VDO 3 2 10m vto=120m dir=1
+C9 VDO 0 100f Rpar=20k noiseless
+C11 GNDS 1 10p
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=3.2 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-3.3
+*
+.subckt LT6654-3 1 2 3
+B2 N005 0 I=8.6u*(V(OUTS,GNDS)-2.99998)
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=4.8u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 25.7m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+A6 OUTS 3 0 0 0 0 N011 0 OTA g=1 asym ref=-400n isource=100n Isink=-80n Rout=1Meg Vlow=-1e308 Vhigh=1e308
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=.7 asym isource=4.7u Isink=-.1u Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G3 2 N005 2 1 27.6p
+G6 0 VDO OUTS 3 .16
+G7 0 N003 VDO N011 10m vto=0 dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u in=350f/(1+1m*dnlim(freq-50k,1,1k)) Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+G5 0 VDO 3 2 10m vto=120m dir=1
+C9 VDO 0 100f Rpar=20k noiseless
+C11 GNDS 1 10p
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=3.5 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-3
+*
+.subckt LT6654-4.096 1 2 3
+B2 N005 0 I=5.5u*(V(OUTS,GNDS)-4.09597-2*V(OUTS,3))
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=4u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 44.5m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+A6 OUTS 3 0 0 0 0 N011 0 OTA g=1 asym ref=-400n isource=100n Isink=-80n Rout=1Meg Vlow=-1e308 Vhigh=1e308
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=.7 asym isource=4.7u Isink=-.1u Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G3 2 N005 2 1 22.3p
+G6 0 VDO OUTS 3 .16
+G7 0 N003 VDO N011 10m vto=0 dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u in=240f/(1+1m*dnlim(freq-50k,1,1k)) Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+G5 0 VDO 3 2 10m vto=120m dir=1
+C9 VDO 0 100f Rpar=20k noiseless
+C11 GNDS 1 10p
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=2.4 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-4.096
+*
+.subckt LT6654-5 1 2 3
+C10 N005 0 1p Rpar=100K noiseless
+A5 N002 0 0 0 0 0 N003 0 OTA g=50u iout=200u Cout=5p Vhigh=1e308 Vlow=-1e308
+D9 N003 0 DLIM
+C13 2 1 1000p
+D7 2 1 DP
+A1 0 N005 0 0 0 0 N002 0 OTA g=1m linear en=3.2u/((25+log(freq))+1m*dnlim(freq-40k,1,1k)) Cout=800p Rout=1.5k Vlow=-1e308 Vhigh=1e308
+M1 OUTS N009 GNDS GNDS NI temp=27
+C2 2 OUTS .1p Rpar=100Meg noiseless
+M2 OUTS N004 2 2 PI temp=27
+C3 OUTS 1 .1p Rpar=10Meg noiseless
+M3 N004 N004 2 2 PI temp=27 M=10m
+M4 N009 N009 1 1 NI temp=27 M=10m
+A3 0 N006 2 2 2 2 N009 2 OTA g=1m asym isource=300u isink=-10u vlow=-1e308 vhigh=1e308
+D1 2 N004 DLIMP
+C1 N003 N002 76p Rser=200k noiseless
+C4 N003 N002 76.7p Rser=150k noiseless
+C6 2 N004 1p
+C7 N009 1 1p
+C8 2 N008 1p
+R1 N008 1 100k noiseless
+G1 1 N005 1 N008 1µ
+R2 GNDS 1 65m noiseless
+A4 0 N003 0 0 0 0 N006 0 OTA g=1u linear Cout=5f Vlow=-1e308 Vhigh=1e308
+R3 3 OUTS 3m noiseless
+A6 OUTS 3 0 0 0 0 N011 0 OTA g=1 asym ref=-400n isource=100n Isink=-80n Rout=1Meg Vlow=-1e308 Vhigh=1e308
+G2 0 VDO 3 2 50µ
+A7 3 OUTS 0 0 0 0 VDO 0 OTA g=.7 asym isource=4.7u Isink=-.1u Vhigh=1e308 Vlow=-1e308
+D3 OUTS GNDS DIVOS
+D4 N006 0 DNLG
+G3 2 N005 2 1 18p
+G6 0 VDO OUTS 3 .16
+G7 0 N003 VDO N011 10m vto=0 dir=1
+A2 0 N006 1 1 1 1 N004 1 OTA g=.5m asym isource=1u Isink=-400u in=150f/(1+1m*dnlim(freq-50k,1,1k)) Vlow=-1e308 Vhigh=1e308
+D2 N004 1 DIMIN
+G5 0 VDO 3 2 10m vto=120m dir=1
+B1 N005 0 I=3u*(V(OUTS,GNDS)-4.99995-4*V(OUTS,3))
+C9 VDO 0 100f Rpar=20k noiseless
+C11 GNDS 1 10p
+.model DP D(Roff=1G Ron=100 Vfwd=.5 epsilon=.5 ilimit=134u noiseless)
+.model PI VDMOS(Vto=-300m Kp=40m  pchan  Cgs=1p oneway)
+.model NI VDMOS(Vto=300m Kp=40m Cgs=1p)
+.model DLIM D(Ron=100 Roff=100Meg Vfwd=7 Vrev=1.5 epsilon=100m revepsilon=100m noiseless)
+.model DNLG D(Ron=3Meg Roff=800k vfwd=50m epsilon=50m vrev=10m revepsilon=100m noiseless)
+.model DLIMP D(Ron=1k Roff=100Meg Vfwd=3.5 epsilon=100m  noiseless)
+.model DIVOS D(Ron=1k Roff=1g vfwd=1 epsilon=1 ilimit=86u noiseless)
+.model DIMIN D(Ron=100 Roff=1g vfwd=700m epsilon=700m ilimit=2.7u noiseless)
+.ends LT6654-5

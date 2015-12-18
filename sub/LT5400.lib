@@ -1,0 +1,43 @@
+* Copyright © Linear Technology Corp. 2012.  All rights reserved.
+*
+.subckt LT5400-1 1 2 3 4 5 6 7 8
+R1 8 1 10K
+R2 7 2 10K
+R3 6 3 10K
+R4 5 4 10K
+.ends LT5400-1
+*
+.subckt LT5400-2 1 2 3 4 5 6 7 8
+R1 8 1 100K
+R2 7 2 100K
+R3 6 3 100K
+R4 5 4 100K
+.ends LT5400-2
+*
+.subckt LT5400-3 1 2 3 4 5 6 7 8
+R1 8 1 100K
+R2 7 2 10K
+R3 6 3 10K
+R4 5 4 100K
+.ends LT5400-3
+*
+.subckt LT5400-4 1 2 3 4 5 6 7 8
+R1 8 1 1K
+R2 7 2 1K
+R3 6 3 1K
+R4 5 4 1K
+.ends LT5400-4
+*
+.subckt LT5400-5 1 2 3 4 5 6 7 8
+R1 8 1 1Meg
+R2 7 2 1Meg
+R3 6 3 1Meg
+R4 5 4 1Meg
+.ends LT5400-5
+*
+.subckt LT5400-6 1 2 3 4 5 6 7 8
+R1 8 1 5K
+R2 7 2 1K
+R3 6 3 1K
+R4 5 4 5K
+.ends LT5400-6

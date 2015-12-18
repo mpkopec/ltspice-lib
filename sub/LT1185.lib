@@ -1,0 +1,33 @@
+* Copyright © Linear Technology Corp. 2012.  All rights reserved.
+*
+.subckt LT1185 1 2 3 4 5
+C4 3 1 10p
+C5 2 1 1p
+C1 5 1 10p
+M1 N009 1 5 5 R temp=27
+D1 N009 3 1uA
+A1 N004 1 N007 3 3 3 N008 3 OTA g=1m Ref=0 Iout=100u Cout=1.2n Rout=350K Vhigh=1 Vlow=-1
+R3 N010 3 .055
+A2 N010 N011 3 3 3 3 N008 3 OTA Isrc=.1u Isink=-1m asym g=10m Ref=.2 Vhigh=100 Vlow=-100
+A3 N010 N009 3 3 3 3 N008 3 OTA Isrc=.1u Isink=-1m asym g=50m Ref=-7m Vhigh=100 Vlow=-100
+C2 N011 3 10p Rpar=4.2K noiseless
+B1 N011 3 I=1/13K +1m/min(-13,V(3,2))
+C3 N009 3 10p Rpar=360 noiseless
+A4 N009 3 3 3 3 3 N007 3 SCHMITT Vt=195u Vh=10u trise=1u
+D2 1 N005 Q1
+D3 1 3 Q2
+G2 1 N004 5 2 100µ
+C6 N004 1 20p Rpar=10K Rser=5K
+C9 4 3 5p
+R6 4 N005 70m
+D4 2 3 B
+M2 N005 N008 N010 N010 Q temp=27
+G1 1 3 N010 3 .44
+G3 1 3 N008 3 4m Vto=0 dir=1
+.model R VDMOS(Vto=2.39 Kp=50 pchan)
+.model 1uA D(Ron=50K Roff=50K Ilimit=2u noiseless)
+.model Q VDMOS(Vto=0 Kp=50 lambda=.3)
+.model Q1 D(Ron=1K epsilon=2 Ilimit=2.1m noiseless)
+.model Q2 D(Ron=15K Vfwd=19 epsilon=2 noiseless)
+.model B D(Ron=1.5Meg Roff=1.5Meg Ilimit=.7u)
+.ends LT1185

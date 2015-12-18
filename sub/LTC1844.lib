@@ -1,0 +1,188 @@
+* Copyright © Linear Technology Corp. 2014.  All rights reserved.
+*
+.subckt LTC1844-1.5 1 2 3 4
+C4 3 2 1p
+C7 N005 2 10f Rpar=1Meg
+C1 4 2 1p
+M1 4 N003 S S P1 temp=27
+C2 1 2 1p
+C3 N003 1 100f Rpar=1Meg noiseless
+A1 N005 N004 ON2 0 0 0 N006 0 OTA g=1.55u linear Rout=100Meg en=280n vlow=0 vhigh=10
+G1 N003 1 N006 0 1µ
+C5 N004 2 1.5p Rpar=1Meg noiseless
+I2 2 N004 1.25µ
+G2 N004 2 2 N003 1m vto=0 dir=1
+G3 2 N004 1 2 833p
+R2 S 1 .11 noiseless
+G4 N004 0 1 S 100m vto=35m dir=1
+A2 0 ON 0 0 0 0 ON2 0 OTA g=1u iout=10u Cout=100f Rout=2Meg vlow=0 vhigh=1
+S1 ON2 0 4 1 SREV
+S2 N003 4 4 1 SREV2
+A4 3 2 0 0 0 0 ON 0 SCHMITT vt=.65 vh=50m trise=90u
+C9 N004 1 1p Rser=200Meg noiseless
+B3 1 2 I=V(ON)*table(V(1,4) ,-100, 7u, -1, 7u, -.8, 15u, -50m, 15u, -10m, 35u, 100, 35u)
+B1 4 2 I=V(ON)*table(V(1,4) ,-100, 5u, -270m, 5u, -20m, 5u, 0, 0)
+C10 N006 0 100f Rser=10Meg noiseless
+G6 N003 1 ON2 0 800n
+C8 N004 1 100f
+R3 4 N005 200k
+.model P1 VDMOS(mtriode=1.1 Vto=-1.05 Kp=.85 lambda=1u  Cgdmax=100f Cgdmin=100f pchan is=0 )
+.model SREV SW(Ron=1 Roff=1G vt=-10m vh=-20m noiseless)
+.model SREV2 SW(Ron=1 Roff=1G vt=295m vh=-50m noiseless)
+.ends LTC1844-1.5
+*
+.subckt LTC1844-1.8 1 2 3 4
+C4 3 2 1p
+C7 N005 2 10f Rpar=1Meg
+C1 4 2 1p
+M1 4 N003 S S P1 temp=27
+C2 1 2 1p
+C3 N003 1 100f Rpar=1Meg noiseless
+A1 N005 N004 ON2 0 0 0 N006 0 OTA g=1.55u linear Rout=100Meg en=280n vlow=0 vhigh=10
+G1 N003 1 N006 0 1µ
+C5 N004 2 1.5p Rpar=1Meg noiseless
+I2 2 N004 1.25µ
+G2 N004 2 2 N003 1m vto=0 dir=1
+G3 2 N004 1 2 833p
+R2 S 1 .11 noiseless
+G4 N004 0 1 S 100m vto=35m dir=1
+A2 0 ON 0 0 0 0 ON2 0 OTA g=1u iout=10u Cout=100f Rout=2Meg vlow=0 vhigh=1
+S1 ON2 0 4 1 SREV
+S2 N003 4 4 1 SREV2
+A4 3 2 0 0 0 0 ON 0 SCHMITT vt=.65 vh=50m trise=90u
+C9 N004 1 1p Rser=200Meg noiseless
+B3 1 2 I=V(ON)*table(V(1,4) ,-100, 7u, -1, 7u, -.8, 15u, -50m, 15u, -10m, 35u, 100, 35u)
+B1 4 2 I=V(ON)*table(V(1,4) ,-100, 5u, -270m, 5u, -20m, 5u, 0, 0)
+C10 N006 0 100f Rser=10Meg noiseless
+G6 N003 1 ON2 0 800n
+C8 N004 1 100f
+R3 4 N005 440k
+.model P1 VDMOS(mtriode=1.1 Vto=-1.05 Kp=.85 lambda=1u  Cgdmax=100f Cgdmin=100f pchan is=0 )
+.model SREV SW(Ron=1 Roff=1G vt=-10m vh=-20m noiseless)
+.model SREV2 SW(Ron=1 Roff=1G vt=295m vh=-50m noiseless)
+.ends LTC1844-1.8
+*
+.subckt LTC1844-2.5 1 2 3 4
+C4 3 2 1p
+C7 N005 2 10f Rpar=1Meg
+C1 4 2 1p
+M1 4 N003 S S P1 temp=27
+C2 1 2 1p
+C3 N003 1 100f Rpar=1Meg noiseless
+A1 N005 N004 ON2 0 0 0 N006 0 OTA g=1.55u linear Rout=100Meg en=280n vlow=0 vhigh=10
+G1 N003 1 N006 0 1µ
+C5 N004 2 1.5p Rpar=1Meg noiseless
+I2 2 N004 1.25µ
+G2 N004 2 2 N003 1m vto=0 dir=1
+G3 2 N004 1 2 833p
+R2 S 1 .11 noiseless
+G4 N004 0 1 S 100m vto=35m dir=1
+A2 0 ON 0 0 0 0 ON2 0 OTA g=1u iout=10u Cout=100f Rout=2Meg vlow=0 vhigh=1
+S1 ON2 0 4 1 SREV
+S2 N003 4 4 1 SREV2
+A4 3 2 0 0 0 0 ON 0 SCHMITT vt=.65 vh=50m trise=90u
+C9 N004 1 1p Rser=200Meg noiseless
+B3 1 2 I=V(ON)*table(V(1,4) ,-100, 7u, -1, 7u, -.8, 15u, -50m, 15u, -10m, 35u, 100, 35u)
+B1 4 2 I=V(ON)*table(V(1,4) ,-100, 5u, -270m, 5u, -20m, 5u, 0, 0)
+C10 N006 0 100f Rser=10Meg noiseless
+G6 N003 1 ON2 0 800n
+C8 N004 1 100f
+R3 4 N005 1Meg
+.model P1 VDMOS(mtriode=1.1 Vto=-1.05 Kp=.85 lambda=1u  Cgdmax=100f Cgdmin=100f pchan is=0 )
+.model SREV SW(Ron=1 Roff=1G vt=-10m vh=-20m noiseless)
+.model SREV2 SW(Ron=1 Roff=1G vt=295m vh=-50m noiseless)
+.ends LTC1844-2.5
+*
+.subckt LTC1844-2.8 1 2 3 4
+C4 3 2 1p
+C7 N005 2 10f Rpar=1Meg
+C1 4 2 1p
+M1 4 N003 S S P1 temp=27
+C2 1 2 1p
+C3 N003 1 100f Rpar=1Meg noiseless
+A1 N005 N004 ON2 0 0 0 N006 0 OTA g=1.55u linear Rout=100Meg en=280n vlow=0 vhigh=10
+G1 N003 1 N006 0 1µ
+C5 N004 2 1.5p Rpar=1Meg noiseless
+I2 2 N004 1.25µ
+G2 N004 2 2 N003 1m vto=0 dir=1
+G3 2 N004 1 2 833p
+R2 S 1 .11 noiseless
+G4 N004 0 1 S 100m vto=35m dir=1
+A2 0 ON 0 0 0 0 ON2 0 OTA g=1u iout=10u Cout=100f Rout=2Meg vlow=0 vhigh=1
+S1 ON2 0 4 1 SREV
+S2 N003 4 4 1 SREV2
+A4 3 2 0 0 0 0 ON 0 SCHMITT vt=.65 vh=50m trise=90u
+C9 N004 1 1p Rser=200Meg noiseless
+B3 1 2 I=V(ON)*table(V(1,4) ,-100, 7u, -1, 7u, -.8, 15u, -50m, 15u, -10m, 35u, 100, 35u)
+B1 4 2 I=V(ON)*table(V(1,4) ,-100, 5u, -270m, 5u, -20m, 5u, 0, 0)
+C10 N006 0 100f Rser=10Meg noiseless
+G6 N003 1 ON2 0 800n
+C8 N004 1 100f
+R3 4 N005 1.24Meg
+.model P1 VDMOS(mtriode=1.1 Vto=-1.05 Kp=.85 lambda=1u  Cgdmax=100f Cgdmin=100f pchan is=0 )
+.model SREV SW(Ron=1 Roff=1G vt=-10m vh=-20m noiseless)
+.model SREV2 SW(Ron=1 Roff=1G vt=295m vh=-50m noiseless)
+.ends LTC1844-2.8
+*
+.subckt LTC1844-3.3 1 2 3 4
+C4 3 2 1p
+C7 N005 2 10f Rpar=1Meg
+C1 4 2 1p
+M1 4 N003 S S P1 temp=27
+C2 1 2 1p
+C3 N003 1 100f Rpar=1Meg noiseless
+A1 N005 N004 ON2 0 0 0 N006 0 OTA g=1.55u linear Rout=100Meg en=280n vlow=0 vhigh=10
+G1 N003 1 N006 0 1µ
+C5 N004 2 1.5p Rpar=1Meg noiseless
+I2 2 N004 1.25µ
+G2 N004 2 2 N003 1m vto=0 dir=1
+G3 2 N004 1 2 833p
+R2 S 1 .11 noiseless
+G4 N004 0 1 S 100m vto=35m dir=1
+A2 0 ON 0 0 0 0 ON2 0 OTA g=1u iout=10u Cout=100f Rout=2Meg vlow=0 vhigh=1
+S1 ON2 0 4 1 SREV
+S2 N003 4 4 1 SREV2
+A4 3 2 0 0 0 0 ON 0 SCHMITT vt=.65 vh=50m trise=90u
+C9 N004 1 1p Rser=200Meg noiseless
+B3 1 2 I=V(ON)*table(V(1,4) ,-100, 7u, -1, 7u, -.8, 15u, -50m, 15u, -10m, 35u, 100, 35u)
+B1 4 2 I=V(ON)*table(V(1,4) ,-100, 5u, -270m, 5u, -20m, 5u, 0, 0)
+C10 N006 0 100f Rser=10Meg noiseless
+G6 N003 1 ON2 0 800n
+C8 N004 1 100f
+R3 4 N005 1.64Meg
+.model P1 VDMOS(mtriode=1.1 Vto=-1.05 Kp=.85 lambda=1u  Cgdmax=100f Cgdmin=100f pchan is=0 )
+.model SREV SW(Ron=1 Roff=1G vt=-10m vh=-20m noiseless)
+.model SREV2 SW(Ron=1 Roff=1G vt=295m vh=-50m noiseless)
+.ends LTC1844-3.3
+*
+.subckt LTC1844-SD 1 2 3 4 5
+C4 3 2 1p
+C7 4 2 1p
+C1 5 2 1p
+M1 5 N003 S S P1 temp=27
+C2 1 2 1p
+C3 N003 1 100f Rpar=1Meg noiseless
+D1 4 2 DADJB
+A1 4 N004 ON2 0 0 0 N006 0 OTA g=1.55u linear Rout=100Meg en=280n vlow=0 vhigh=10
+G1 N003 1 N006 0 1µ
+C5 N004 2 1.5p Rpar=1Meg noiseless
+I2 2 N004 1.25µ
+G2 N004 2 2 N003 1m vto=0 dir=1
+G3 2 N004 1 2 833p
+R2 S 1 .11 noiseless
+G4 N004 0 1 S 100m vto=35m dir=1
+A2 0 ON 0 0 0 0 ON2 0 OTA g=1u iout=10u Cout=100f Rout=2Meg vlow=0 vhigh=1
+S1 ON2 0 5 1 SREV
+S2 N003 5 5 1 SREV2
+A4 3 2 0 0 0 0 ON 0 SCHMITT vt=.65 vh=50m trise=90u
+C9 N004 1 1p Rser=200Meg noiseless
+B3 1 2 I=V(ON)*table(V(1,5) ,-100, 7u, -1, 7u, -.8, 15u, -50m, 15u, -10m, 35u, 100, 35u)
+B1 5 2 I=V(ON)*table(V(1,5) ,-100, 5u, -270m, 5u, -20m, 5u, 0, 0)
+C10 N006 0 100f Rser=10Meg noiseless
+G6 N003 1 ON2 0 800n
+C8 N004 1 100f
+.model P1 VDMOS(mtriode=1.1 Vto=-1.05 Kp=.85 lambda=1u  Cgdmax=100f Cgdmin=100f pchan is=0 )
+.model DADJB D(Ron=100k Roff=1G vfwd=600m epsilon=500m ilimit=30n noiseless)
+.model SREV SW(Ron=1 Roff=1G vt=-10m vh=-20m noiseless)
+.model SREV2 SW(Ron=1 Roff=1G vt=295m vh=-50m noiseless)
+.ends LTC1844-SD

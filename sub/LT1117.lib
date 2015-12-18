@@ -1,0 +1,91 @@
+* Copyright © Linear Technology Corp. 2012.  All rights reserved.
+*
+.subckt LT1117-2.85 1 2 3
+C4 3 COM 10p
+C5 2 COM 5p
+M1 N001 N005 2 2 Q temp=27
+D1 3 2 IM
+D2 3 N001 DO
+G2 3 N005 3 2 13n
+D3 3 COM 55uA
+G1 N005 2 2 N004 100µ
+C1 2 N005 50p Rpar=10K noiseless
+C3 N001 3 10p
+C2 2 N004 5n
+A1 2 COM 2 2 2 2 N004 2 OTA g=100u Iout=10u Ref=1.259 Vhigh=10 Vlow=-10
+D5 N004 2 10K
+R1 2 COM 250 noiseless
+R2 COM 1 313 noiseless
+.model Q VDMOS(Vto=0 Kp=800K)
+.model IM D(Ron=100 Vfwd=.6 epsilon=.2 Ilimit=1.7m noiseless)
+.model DO D(Ron=.1 epsilon=.07 Vfwd=.95 Ilimit=.95 noiseless)
+.model 55uA D(Ron=10K Roff=10K Ilimit=55u noiseless)
+.model 10K D(Ron=1 Roff=10K Vfwd=3m Vrev=3m epsilon=100m revepsilon=100m noiseless)
+.ends LT1117-2.85
+*
+.subckt LT1117-3.3 1 2 3
+C4 3 COM 10p
+C5 2 COM 5p
+M1 N001 N005 2 2 Q temp=27
+D1 3 2 IM
+D2 3 N001 DO
+G2 3 N005 3 2 13n
+D3 3 COM 55uA
+G1 N005 2 2 N004 100µ
+C1 2 N005 50p Rpar=10K noiseless
+C3 N001 3 10p
+C2 2 N004 5n
+A1 2 COM 2 2 2 2 N004 2 OTA g=100u Iout=10u Ref=1.259 Vhigh=10 Vlow=-10
+D5 N004 2 10K
+R1 2 COM 250 noiseless
+R2 COM 1 401 noiseless
+.model Q VDMOS(Vto=0 Kp=800K)
+.model IM D(Ron=100 Vfwd=.6 epsilon=.2 Ilimit=1.7m noiseless)
+.model DO D(Ron=.1 epsilon=.07 Vfwd=.95 Ilimit=.95 noiseless)
+.model 55uA D(Ron=10K Roff=10K Ilimit=55u noiseless)
+.model 10K D(Ron=1 Roff=10K Vfwd=3m Vrev=3m epsilon=100m revepsilon=100m noiseless)
+.ends LT1117-3.3
+*
+.subckt LT1117-5 1 2 3
+C4 3 COM 10p
+C5 2 COM 5p
+M1 N001 N005 2 2 Q temp=27
+D1 3 2 IM
+D2 3 N001 DO
+G2 3 N005 3 2 13n
+D3 3 COM 55uA
+G1 N005 2 2 N004 100µ
+C1 2 N005 50p Rpar=10K noiseless
+C3 N001 3 10p
+C2 2 N004 5n
+A1 2 COM 2 2 2 2 N004 2 OTA g=100u Iout=10u Ref=1.259 Vhigh=10 Vlow=-10
+D5 N004 2 10K
+R1 2 COM 250 noiseless
+R2 COM 1 735 noiseless
+.model Q VDMOS(Vto=0 Kp=800K)
+.model IM D(Ron=100 Vfwd=.6 epsilon=.2 Ilimit=1.7m noiseless)
+.model DO D(Ron=.1 epsilon=.07 Vfwd=.95 Ilimit=.95 noiseless)
+.model 55uA D(Ron=10K Roff=10K Ilimit=55u noiseless)
+.model 10K D(Ron=1 Roff=10K Vfwd=3m Vrev=3m epsilon=100m revepsilon=100m noiseless)
+.ends LT1117-5
+*
+.subckt LT1117 1 2 3
+C4 3 1 10p
+C5 2 1 5p
+M1 N001 N005 2 2 Q temp=27
+D1 3 2 IM
+D2 3 N001 DO
+G2 3 N005 3 2 13n
+D3 3 1 55uA
+G1 N005 2 2 N004 100µ
+C1 2 N005 50p Rpar=10K noiseless
+C3 N001 3 10p
+C2 2 N004 5n
+A1 2 1 2 2 2 2 N004 2 OTA g=100u Iout=10u Ref=1.259 Vhigh=10 Vlow=-10
+D5 N004 2 10K
+.model Q VDMOS(Vto=0 Kp=800K)
+.model IM D(Ron=100 Vfwd=.6 epsilon=.2 Ilimit=1.7m noiseless)
+.model DO D(Ron=.1 epsilon=.07 Vfwd=.95 Ilimit=.95 noiseless)
+.model 55uA D(Ron=10K Roff=10K Ilimit=55u noiseless)
+.model 10K D(Ron=1 Roff=10K Vfwd=3m Vrev=3m epsilon=100m revepsilon=100m noiseless)
+.ends LT1117

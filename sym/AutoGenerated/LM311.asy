@@ -1,0 +1,43 @@
+Version 4
+SymbolType BLOCK
+LINE Normal -32 -32 32 0
+LINE Normal -32 32 -32 -32
+LINE Normal 32 0 -32 32
+LINE Normal 0 -32 0 -16
+LINE Normal 0 16 0 32
+LINE Normal 48 16 48 -16
+LINE Normal 64 -16 64 -32
+LINE Normal 48 -5 64 -16
+LINE Normal 48 0 32 0
+LINE Normal 64 16 64 32
+LINE Normal 60 10 64 16
+LINE Normal 57 15 60 10
+LINE Normal 64 16 57 15
+LINE Normal 58 12 48 5
+LINE Normal 64 16 58 12
+LINE Normal -22 -16 -28 -16
+LINE Normal -22 16 -28 16
+LINE Normal -25 19 -25 13
+WINDOW 0 73 -7 Left 2
+WINDOW 3 72 19 Left 2
+SYMATTR Prefix X
+SYMATTR Value LM311
+SYMATTR ModelFile LM311.sub
+PIN -32 16 NONE 8
+PINATTR PinName 1
+PINATTR SpiceOrder 1
+PIN -32 -16 NONE 8
+PINATTR PinName 2
+PINATTR SpiceOrder 2
+PIN 0 -32 NONE 8
+PINATTR PinName 3
+PINATTR SpiceOrder 3
+PIN 0 32 NONE 8
+PINATTR PinName 4
+PINATTR SpiceOrder 4
+PIN 64 -32 NONE 8
+PINATTR PinName 5
+PINATTR SpiceOrder 5
+PIN 64 32 NONE 8
+PINATTR PinName 6
+PINATTR SpiceOrder 6

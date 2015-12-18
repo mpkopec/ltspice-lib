@@ -1,0 +1,41 @@
+Version 4
+SymbolType CELL
+RECTANGLE Normal -144 -208 144 192
+TEXT 0 0 Center 2 LT
+WINDOW 0 0 -96 Center 2
+WINDOW 3 0 80 Center 2
+SYMATTR Value LT8584
+SYMATTR Prefix X
+SYMATTR SpiceModel LT8584.sub
+SYMATTR Value2 LT8584
+SYMATTR Description 2.5A Monolithic Active Cell Balancer with Telemetry Interface
+PIN -144 -144 LEFT 8
+PINATTR PinName Vin
+PINATTR SpiceOrder 9
+PIN 0 -208 TOP 8
+PINATTR PinName SW
+PINATTR SpiceOrder 13
+PIN -144 128 LEFT 8
+PINATTR PinName Mode
+PINATTR SpiceOrder 5
+PIN 0 192 BOTTOM 8
+PINATTR PinName GND
+PINATTR SpiceOrder 1
+PIN -144 -48 LEFT 8
+PINATTR PinName Vsns
+PINATTR SpiceOrder 11
+PIN -144 48 LEFT 8
+PINATTR PinName Vcell
+PINATTR SpiceOrder 10
+PIN 144 -144 RIGHT 8
+PINATTR PinName OUT
+PINATTR SpiceOrder 8
+PIN 144 -48 RIGHT 8
+PINATTR PinName Din
+PINATTR SpiceOrder 7
+PIN 144 48 RIGHT 8
+PINATTR PinName Dchrg
+PINATTR SpiceOrder 12
+PIN 144 128 RIGHT 8
+PINATTR PinName Rtmr
+PINATTR SpiceOrder 6

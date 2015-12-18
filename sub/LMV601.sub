@@ -1,0 +1,182 @@
+* LMV601
+*****************************************************************************
+* (C) Copyright 2012 Texas Instruments Incorporated. All rights reserved.
+*****************************************************************************
+** This model is designed as an aid for customers of Texas Instruments.
+** TI and its licensors and suppliers make no warranties, either expressed
+** or implied, with respect to this model, including the warranties of
+** merchantability or fitness for a particular purpose.  The model is
+** provided solely on an "as is" basis.  The entire risk as to its quality
+** and performance is with the customer.
+*****************************************************************************
+*
+** Released by: WEBENCH(R) Design Center, Texas Instruments Inc.
+* Part: LMV601
+* Date: 5/8/2012
+* Model Type: All In One
+* Simulator: Spice
+* Simulator Version: N/A
+* EVM Order Number: N/A
+* EVM Users Guide: N/A
+* Datasheet: SNOSC70 - April 19, 2012
+*
+* Model Version: 1.0
+*
+*****************************************************************************
+*
+* Updates:
+*
+* Version 1.0 : Release to Web
+*
+*****************************************************************************
+* Notes:
+* This model can be used for LMV601, LMV602 and LMV604
+*
+* BEGIN MODEL LMV601
+* NOTE THAT THIS MODEL DOES NOT SUPPORT THE
+* SHUTDOWN FEATURE OF THE LMV601.
+* NOTE THAT PINOUT IS FOR A AMPLIFIER ONLY.
+* PINOUT ORDER +IN -IN +V -V OUT
+* PINOUT ORDER  3   2   8  4  1
+*****************************************************************************
+.SUBCKT LMV601 3 2 8 4 1
+R77 12 13 2
+R78 14 13 2
+R79 15 10 100
+R80 16 17 100
+R81 18 8 8
+R82 4 19 8
+R84 20 21 3.3E3
+R85 22 23 8
+R86 11 24 8
+D21 1 8 DD
+D22 4 1 DD
+D23 25 0 DIN
+D24 26 0 DIN
+I24 0 25 0.1E-3
+I25 0 26 0.1E-3
+E25 11 0 4 0 1
+E26 23 0 8 0 1
+D25 27 0 DVN
+D26 28 0 DVN
+I26 0 27 1E-3
+I27 0 28 1E-3
+E27 29 2 27 28 3.1
+G13 30 2 25 26 5E-7
+E28 31 0 23 0 1
+E29 32 0 11 0 1
+E30 33 0 34 0 1
+R88 31 35 1E6
+R89 32 36 1E6
+R90 33 37 1E6
+R91 0 35 100
+R92 0 36 100
+R93 0 37 100
+E31 38 3 37 0 -3
+R94 39 34 1K
+R95 34 40 1K
+C29 31 35 0.2E-12
+C30 32 36 0.2E-12
+C31 33 37 200E-12
+E32 41 38 36 0 0.5
+E33 42 41 35 0 0.5
+E34 43 11 23 11 0.5
+D27 20 23 DD
+D28 11 20 DD
+M24 44 45 19 19 NOUT L=3U W=2000U
+M25 46 47 18 18 POUT L=3U W=2000U
+M26 48 48 22 22 POUT L=3U W=2000U
+M27 49 50 12 12 PIN L=3U W=50U
+M28 51 52 14 14 PIN L=3U W=50U
+M29 53 53 24 24 NOUT L=3U W=2000U
+R96 54 47 100
+R97 55 45 100
+G14 20 43 56 43 0.2E-3
+R98 43 20 60E6
+C32 21 1 30E-12
+R99 11 49 2.05E3
+R100 11 51 2.05E3
+C33 49 51 18E-12
+C34 42 0 5E-12
+C35 0 29 5E-12
+C36 1 0 1E-12
+D29 45 9 DD
+D30 57 47 DD
+Q21 9 10 11 QNL
+Q22 57 16 23 QPL
+V27 30 50 0.7E-3
+M33 58 59 23 23 PIN L=6U W=500U
+I28 48 53 2E-6
+E35 40 0 30 0 1
+E36 39 0 2 0 1
+M36 59 59 23 23 PIN L=6U W=500U
+I29 59 11 75E-6
+V30 58 13 0.098
+R105 1 46 15
+R106 44 1 15
+J5 60 30 60 JC
+J6 60 52 60 JC
+J7 52 61 52 JC
+J8 30 61 30 JC
+C38 42 29 3E-12
+E38 62 43 51 49 1
+R108 62 56 10K
+C40 56 43 6E-12
+G16 63 43 20 43 -1E-3
+G17 43 64 20 43 1E-3
+G18 43 65 53 11 1E-3
+G19 66 43 23 48 1E-3
+D31 66 63 DD
+D32 64 65 DD
+R110 63 66 100E6
+R111 65 64 100E6
+R112 66 23 1E3
+R113 11 65 1E3
+E39 23 54 23 66 1
+E40 55 11 65 11 1
+R114 64 43 1E6
+R115 65 43 1E6
+R116 43 66 1E6
+R117 43 63 1E6
+R118 4 8 1E6
+G20 8 4 67 0 -50U
+D33 68 0 DD
+V33 68 67 0.6
+R119 0 67 1E6
+I31 8 4 153U
+I32 30 0 0.02E-12
+I33 52 0 0.02E-12
+I34 0 68 0.2U
+C45 69 52 1E-12
+C46 69 30 1E-12
+R122 0 69 220
+E41 69 0 25 26 18
+V45 23 60 0.45
+V46 61 11 0.45
+E42 8 17 8 18 1
+E43 15 4 19 4 1
+R204 30 42 8E3
+R205 29 52 8E3
+R210 41 42 1E9
+R211 38 41 1E9
+R212 3 38 1E9
+R213 2 29 1E9
+R214 43 56 1E9
+R215 48 23 1E9
+R216 11 53 1E9
+R217 1 47 1E9
+R218 45 19 1E9
+R219 0 68 1E9
+.MODEL JC NJF IS=1E-18
+.MODEL DVN D KF=5E-14 IS=1E-16
+.MODEL DIN D
+.MODEL DD D
+.MODEL QPL PNP
+.MODEL QNL NPN
+.MODEL POUT PMOS KP=200U VTO=-0.7
+.MODEL NOUT NMOS KP=200U VTO=0.7
+.MODEL PIN PMOS KP=200U VTO=-0.7
+.MODEL NIN NMOS KP=200U VTO=0.7
+.MODEL PINT PMOS KP=200U VTO=-0.7 LAMBDA=0.01
+.ENDS
+* END MODEL LMV601

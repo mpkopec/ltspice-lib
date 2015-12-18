@@ -1,0 +1,28 @@
+.SUBCKT JK_FLIPFLOP1  J K C S R QN Q  FGND
+* No support for floating ground.
+* Replace all 0 with FGND in lines 18 to 24
+* if floating ground is required.
+* 
+.param Td=10n
+.param Trise=5n
+.param Vhigh=5
+.param Ref=2.5
+.param Vlow=0
+*
+Rs S 0 1G
+Rc R 0 1G
+Rg FGND 0 1G
+*
+* J=1, K=0    Q=1
+* J=1, K=1    Q=toggle
+* J=0, K=0    Q=no change
+* J=0, K=1    Q=0  
+AKNF  K  0  0  0  0  Kn  KNx 0  BUF Vhigh={Vhigh} Ref={Ref}
+AJNF  J  0  0  0  0  Jn  Jnx 0  BUF Vhigh={Vhigh} Ref={Ref}
+A11   J  Kn 0  0  0  D1x D1  0  AND Vhigh={Vhigh} Ref={Ref}
+A10   J  K  QN 0  0  D2x D2  0  AND Vhigh={Vhigh} Ref={Ref} 
+A01   Jn Kn Q  0  0  D3x D3  0  AND Vhigh={Vhigh} Ref={Ref}
+AOR3  D1 D2 D3 0  0  Dix Di  0  OR Vhigh={Vhigh}  Ref={Ref}
+ADFF  Di 0  C  S  R  QN  Q   0  DFLOP Vhigh={Vhigh} Vlow={Vlow} Ref=2.5 Trise=5n Td={Td} IC=0
+.ends
+

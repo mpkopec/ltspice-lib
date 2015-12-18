@@ -1,0 +1,37 @@
+* Copyright (c) 1998-2014 Linear Technology Corporation.  All rights reserved.
+*
+.subckt LT3063 1 2 3 4 5 6 7 8
+C2 7 8 2p Rpar=50Meg
+A1 7 8 8 8 8 8 N007 8 SCHMITT Vt=.75 Vh=50m Trise=30n
+A2 5 8 8 8 8 8 N004 8 SCHMITT Vt=1.19 Vh=5m Trise=30n
+A3 8 N004 8 N007 8 N008 RN 8 AND Trise=30n Vhigh=.6
+R1 RN 1 100K
+C3 1 8 .2p Rpar=1G
+S1 1 8 8 RN SDN
+A4 2 1 N011 8 8 8 N010 8 OTA G=100m asym Rout=10Meg Cout=20p Isource=50u Isink=-10u
+Q1 3 N006 N002 0 PAS
+Q2 N006 N010 8 0 NDR
+C5 5 8 20p Rpar=50Meg
+C6 3 8 10p Rpar=.1G
+C7 2 8 .2p Rpar=1G
+R5 5 N002 9m
+R6 N005 8 100K
+G1 8 N005 5 N002 1.111m
+G2 8 N012 5 3 table( 7 3.1u 45 2u)
+C8 N012 8 100p Rpar=100K
+A5 N005 N012 8 8 8 8 N011 8 OTA g=20m Cout=2p Vlow=0 Ref=0 Rout=10Meg Vhigh=1
+C9 N010 8 3500p Rser=250
+M1 N019 N020 8 8 DISC temp=27
+R4 3 N019 10
+A6 N015 N018 N016 8 8 8 N020 8 OTA G=.1u Rout=10Meg linear Vhigh=2
+D1 N020 3 GEN
+A7 3 8 8 8 8 8 N015 8 SCHMITT Vt=6.2 Vh=.1 Tau=5u Vhigh=0 Vlow=-2
+A8 N014 8 N018 8 RN 8 N016 8 DFLOP Trise=20n
+A9 2 8 8 8 8 8 N014 8 SCHMITT Vt=.2 Vh=50m
+A10 N008 8 8 8 8 8 N018 8 BUF Trise=.1u
+.model GEN D(Ron=100 Roff=10G Vfwd=.35)
+.model SDN SW(Ron=100 Roff=10G Vt=-.3 Vh=-.1)
+.model PAS PNP(Bf=60 Rb=2 Re=.85 Cje=2p Cjc=2p)
+.model NDR NPN(Bf=100 Cje=.1p Cjc=.1p Re=25 Rb=10)
+.model DISC VDMOS(Kp=.4 Vto=.5 Rs=.2 Rd=10)
+.ends LT3063

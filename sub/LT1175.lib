@@ -1,0 +1,83 @@
+* Copyright © Linear Technology Corp. 2012.  All rights reserved.
+*
+.subckt LT1175-5 1 2 3 4 5 6 7
+C4 1 5 10p
+C5 3 5 5p
+M1 N004 N009 3 3 Q temp=27
+D3 5 1 10uA
+G1 N009 3 3 N008 100µ
+C1 3 N009 1p Rpar=10K noiseless
+C3 N004 1 10p Rpar=2.5
+C2 3 N008 250p Rser=500 Cpar=100p noiseless
+A1 4 5 3 3 3 3 N008 3 OTA g=76u Iout=20u Ref=-5 Vhigh=10 Vlow=-10
+D5 3 N008 200K
+C9 2 5 10p
+C10 7 5 10p
+D6 5 4 10uA m=1.2
+C11 4 5 1p
+D7 6 1 1uA
+D8 6 5 3uA
+A2 6 5 5 5 5 5 N001 5 SCHMITT Vt=1.65 Vh=1m Vhigh=2 Rout=10K
+A3 6 5 5 5 5 N001 5 5 SCHMITT Vt=-1.65 Vh=1m Vhigh=2 Rout=10K Cout=100p
+S1 3 N008 5 N001 SD
+S2 1 5 N001 5 IQ
+G2 N009 3 3 1 12n
+C6 N004 2 10p Rpar=2.5
+C7 N004 7 20p Rpar=1.25
+G4 N009 3 N006 N004 .5 Vto=.25 dir=-1
+B1 1 N006 I=1m/ max(13.5,V(3,1)) Rpar=10K
+C12 N006 1 10p
+G3 1 5 1 N004 4.16m
+G5 1 5 2 N004 4.16m
+G6 1 5 7 N004 8.32m
+D1 5 3 10uA m=.1
+S4 3 N009 5 N001 SD
+.model Q VDMOS(Vto=0 Kp=100 Vto=-10m pchan)
+.model 10uA D(Ron=100K Roff=100K Ilimit=10u noiseless)
+.model 200K D(Ron=100 Roff=200K Vfwd=.15 Vrev=0 epsilon=.1 revepsilon=.1 noiseless)
+.model 1uA D(Ron=100K epsilon=.5 Ilimit=1u noiseless Vrev=8.5 revepsilon=.5 Vfwd=2)
+.model 3uA D(Ron=100K epsilon=.5 Ilimit=3u noiseless Vfwd=1 noiseless)
+.model SD SW(Ron=1K Roff=1G Vt=-.5 Vh=-.4 noiseless)
+.model IQ SW(Ron=2K Roff=1G Vt=.5 Vh=-.4 Ilimit=35u level=2 noiseless)
+.ends LT1175-5
+*
+.subckt LT1175 1 2 3 4 5 6 7
+C4 1 5 10p
+C5 3 5 5p
+M1 N004 N008 3 3 Q temp=27
+D3 5 1 10uA
+G1 N008 3 3 N007 100µ
+C1 3 N008 1p Rpar=10K noiseless
+C3 N004 1 10p Rpar=2.5
+C2 3 N007 250p Rser=500 Cpar=100p noiseless
+A1 4 5 3 3 3 3 N007 3 OTA g=100u Iout=20u Ref=-3.8 Vhigh=10 Vlow=-10
+D5 3 N007 200K
+C9 2 5 10p
+C10 7 5 10p
+D6 5 4 10uA m=7.5m
+C11 4 5 1p
+D7 6 1 1uA
+D8 6 5 3uA
+A2 6 5 5 5 5 5 N001 5 SCHMITT Vt=1.65 Vh=1m Vhigh=2 Rout=10K
+A3 6 5 5 5 5 N001 5 5 SCHMITT Vt=-1.65 Vh=1m Vhigh=2 Rout=10K Cout=100p
+S1 3 N007 5 N001 SD
+S2 1 5 N001 5 IQ
+G2 N008 3 3 1 12n
+C6 N004 2 10p Rpar=2.5
+C7 N004 7 20p Rpar=1.25
+G4 N008 3 N006 N004 .5 Vto=.25 dir=-1
+B1 1 N006 I=1m/ max(13.5,V(3,1)) Rpar=10K
+C12 N006 1 10p
+G3 1 5 1 N004 4.16m
+G5 1 5 2 N004 4.16m
+G6 1 5 7 N004 8.32m
+D1 5 3 10uA m=.1
+S4 3 N008 5 N001 SD
+.model Q VDMOS(Vto=0 Kp=100 Vto=-10m pchan)
+.model 10uA D(Ron=100K Roff=100K Ilimit=10u noiseless)
+.model 200K D(Ron=100 Roff=200K Vfwd=.15 Vrev=0 epsilon=.1 revepsilon=.1 noiseless)
+.model 1uA D(Ron=100K epsilon=.5 Ilimit=1u noiseless Vrev=8.5 revepsilon=.5 Vfwd=2)
+.model 3uA D(Ron=100K epsilon=.5 Ilimit=3u noiseless Vfwd=1 noiseless)
+.model SD SW(Ron=1K Roff=1G Vt=-.5 Vh=-.4 noiseless)
+.model IQ SW(Ron=2K Roff=1G Vt=.5 Vh=-.4 Ilimit=35u level=2 noiseless)
+.ends LT1175
