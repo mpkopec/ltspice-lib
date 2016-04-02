@@ -1485,74 +1485,85 @@ D4 1 5 DBIAS
 .ends LT6013
 *
 .subckt LT6016 1 2 3 4 5
-A1 2 1 0 0 0 0 0 0 OTA g=0 in=88f ink=289
-B1 0 N006 I=10u*dnlim(uplim(V(1),V(4)+76.1,.1), V(4)-.15, .1)+1n*V(1)-8.65n
+B1 0 N006 I=10u*dnlim(uplim(V(1),V(4)+76.1,.1), V(4)-.15, .1)+1n*V(1)-10.72254n
 B2 N006 0 I=10u*dnlim(uplim(V(2),V(4)+76.1,.1), V(4)-.16, .1)+1n*V(2)
 C10 N006 0 50f Rpar=100K noiseless
-M1 N014 N013 4 4 NI temp=27
+M1 N016 NG 4 4 NI temp=27
 C2 3 5 1p Rpar=1g noiseless
-D5 N013 4 DLIMN1
+D5 NG 4 DLIMN1
 M2 5 N007 N004 N004 PI temp=27
-C3 3 N007 48f Rser=400k noiseless
-A3 N010 N012 4 4 4 4 N007 4 OTA g=2u ref=-.305 linear vlow=-1e308 vhigh=1e308
+A3 N013 N015 4 4 4 4 N007 4 OTA g=2u ref=-.305 linear vlow=-1e308 vhigh=1e308
 C11 5 4 1p Rpar=1g noiseless
-C12 N013 4 48f Rser=250k noiseless
-D6 N013 4 DLIMN2
-A4 0 N006 0 0 0 0 N008 0 OTA g=1u linear en=18n enk=3 Vhigh=1e308 Vlow=-1e308
-C16 N012 5 2.8p
-A5 N008 0 N010 N010 N010 N010 N012 N010 OTA g=50u asym isource=2.67u isink=-3.97u Vlow=-1e308 Vhigh=1e308
-G1 4 N013 N012 N010 140n
-D9 N012 N010 DLIM
+D6 NG 4 DLIMN2
+C16 N015 5 1.8p
+A5 N011 0 N013 N013 N013 N013 N015 N013 OTA g=25u asym isource=1.8u isink=-2.8u Vlow=-1e308 Vhigh=1e308
+G1 4 NG N015 N013 140n
+D9 N015 N013 DLIM
 C7 3 1 2.5p Rser=1k Rpar=100G noiseless
-C13 3 4 1000p
-C1 N008 0 78f Rpar=2Meg noiseless
-G2 0 N010 4 0 .5m
-G4 0 N010 3 0 .5m
-C18 N010 0 200p Rpar=1K noiseless
+C13 3 4 10p
+C1 N009 0 25f
+G2 0 N013 4 0 .5m
+G4 0 N013 3 0 .5m
+C18 N013 0 200p Rpar=1K noiseless
 C4 3 2 2.5p Rser=1k Rpar=100G noiseless
 C6 1 4 2.5p Rser=1k Rpar=100G noiseless
 C8 2 4 2.5p Rser=1k Rpar=100G noiseless
 D3 3 N004 DSBD
 C5 3 N004 100f Rpar=10Meg noiseless
 D4 N004 N007 DLIMP
-D2 N008 0 DLIM0
+D2 N009 0 DLIM0
 D1 4 5 DESD
 D8 4 1 DESD
 D10 4 2 DESD
-GNOI 1 2 N011 0 1µ
-S9 0 N011 3 2 SNOI
-A2 N011 0 0 0 0 0 0 0 OTA g=0 in=10p ink=30
-D11 5 N014 DNR
-C15 N014 4 100f Rpar=10Meg noiseless
+A2 N014 0 0 0 0 0 0 0 OTA g=0 in=11.4p ink=15
+D11 5 N016 DNR
+C15 N016 4 100f Rpar=10Meg noiseless
 D7 N007 3 DLIMPR
 D12 3 4 DP
 A6 4 3 0 0 0 0 N005 0 OTA g=2u iout=1u ref=-2.5 Rout=1Meg Cout=100f vlow=-1e308 vhigh=1e308
-S4 N009 4 N005 0 SBiasN
-D13 3 N009 DBiasDrop
-D14 2 N009 DBiasOTT
-D15 1 N009 DBiasOTT
-C14 N009 4 100f
+S4 N012 4 N005 0 SBiasN
+D13 3 N012 DBiasDrop
+C14 N012 4 100f
 S2 N004 N007 0 N005 SHUT
-S3 N013 4 0 N005 SHUT
+S3 NG 4 0 N005 SHUT
 D16 2 1 D1Meg
-.model DP D(Ron=1k Roff=1g Vfwd=2.5 epsilon=100m ilimit=32u noiseless)
+C17 N010 0 54.26f noiseless Rser=2.667Meg Rpar=1Meg
+G3 0 N010 N009 0 1µ
+D17 0 N009 DNLIN
+C19 N011 0 25f noiseless Rpar=1Meg
+G5 0 N011 N010 0 1µ
+S5 N013 N015 4 5 SGK
+C3 3 N007 .9p Rser=700k noiseless
+C12 NG 4 .9p Rser=700k noiseless
+D14 2 N012 DBiasOTT
+D15 1 N012 DBiasOTT
+S1 0 N008 3 2 SNOI
+A7 N008 0 0 0 0 0 0 0 OTA g=0 in=17.25p ink=5
+A1 2 1 0 0 0 0 0 0 OTA g=0 in=100f ink=255
+GNOI_I 1 2 N014 0 1µ
+S6 0 N014 3 2 SNOI
+A4 0 N006 0 0 0 0 N009 0 OTA g=1u linear en=18n enk=3 Vhigh=1e308 Vlow=-1e308
+GNOI_V N006 0 N008 0 10n
+.model DP D(Ron=1k Roff=1G Vfwd=2.5 epsilon=100m ilimit=32u noiseless)
 .model DESD D(Ron=1k Roff=1G vfwd=700m epsilon=100m noiseless)
 .model SNOI SW(Ron=1 Roff=1Meg vt=1.2 vh=-100m noiseless)
-.model NI VDMOS(Vto=300m kp=60m lambda=.01)
+.model NI VDMOS(Vto=300m kp=60m Mtriode=.9 lambda=.01)
 .model PI VDMOS(Vto=-300m Kp=120m lambda=.01 pchan is=0)
-.model DLIM0 D(Ron=10 Roff=2Meg Vfwd=1 epsilon=100m Vrev=1 epsilon=100m noiseless)
-.model DLIM D(Ron=100 Roff=7Meg Vfwd=500m Vrev=100m epsilon=10m revepsilon=10m noiseless)
-.model SHUT SW(level=2 Ron=100k Roff=100G vt=-.5 vh=-.2 noiseless)
+.model DLIM0 D(Ron=10 Roff=10Meg Vfwd=1 epsilon=100m Vrev=1 epsilon=100m noiseless)
+.model DNLIN D(Roff=1.8Meg Ron=800k vfwd=0 epsilon=10m noiseless)
+.model DLIM D(Ron=100 Roff=8Meg Vfwd=500m Vrev=100m epsilon=10m revepsilon=10m noiseless)
+.model SHUT SW(level=2 Ron=10k Roff=100G vt=-.5 vh=-.2 noiseless)
 .model DSBD D( Ron=100 Roff=100Meg  Vfwd=420m epsilon=50m  Vrev=100 revepsilon=10m noiseless)
-.model DNR D(Ron=10 Roff=100Meg Vfwd=-3m epsilon=10m noiseless)
-.model DLIMN1 D(Ron=200k Roff=415Meg Vfwd=.97 Vrev=-330m epsilon=.1  noiseless)
+.model DNR D(Ron=10 Roff=1G Vfwd=1m epsilon=300m noiseless)
+.model DLIMN1 D(Ron=200k Roff=415Meg Vfwd=1.2 Vrev=-330m epsilon=.1  noiseless)
 .model DLIMN2 D(Ron=5Meg Roff=1G Vfwd=-20m epsilon=50m ilimit=44n noiseless)
 .model DLIMP D(Ron=100k Roff=100Meg Vfwd=1 epsilon=10m noiseless)
 .model DLIMPR D(Ron=5Meg Roff=1G Vfwd=100m epsilon=10m noiseless)
-.model SBiasN SW(level=2 Ron=10k Roff=1g vt=.5 vh=-.2 ilimit=28u)
-.model DBiasDrop D(Ron=1k Roff=1g vfwd=2.4 epsilon=500m)
-.model DBiasOTT D(Ron=500 Roff=1g vfwd=700m epsilon=200m)
-.model D1Meg D(Ron=1Meg Roff=1Meg vfwd=0 vrev=0 ilimit=10n revilimit=10n)
+.model SGK SW(level=2 Ron=65k Roff=100G  vt=-260m vh=150m oneway epsilon=10m noiseless)
+.model SBiasN SW(level=2 Ron=10k Roff=1g vt=.5 vh=-.2 ilimit=28u noiseless)
+.model DBiasDrop D(Ron=1k Roff=1G vfwd=2.27 epsilon=500m noiseless)
+.model DBiasOTT D(Ron=500 Roff=1G vfwd=700m epsilon=200m noiseless)
+.model D1Meg D(Ron=1Meg Roff=1Meg vfwd=0 vrev=0 ilimit=10n revilimit=10n noiseless)
 .ends LT6016
 *
 .subckt LTC6268 1 2 3 4 5 6
@@ -1567,7 +1578,7 @@ C3 4 N005 10f Rser=5Meg noiseless
 C11 3 5 10f
 C12 N010 5 10f Rser=5Meg noiseless
 D6 N010 5 DLIMN
-A4 0 N004 0 0 0 0 N006 0 OTA g=1m linear en=4n*dnlim((110k/freq)**.415,1,.1)*dnlim((2Meg/freq)**.1,1,.1)*dnlim((freq/40Meg)**.35,1,.1) Vhigh=1e308 Vlow=-1e308
+A4 0 N004 0 0 0 0 N006 0 OTA g=1m linear en=4n*dnlim((120k/freq)**.342,1,.1)*dnlim((2Meg/freq)**.1,1,.1)*dnlim((freq/40Meg)**.35,1,.1) Vhigh=1e308 Vlow=-1e308
 C16 N008 3 .9p
 G1 5 N010 N008 REF 100n
 C7 4 1 225f
@@ -1607,118 +1618,160 @@ A7 N013 REF REF REF REF REF N009 REF BUF trise=100n
 .model DESD D(Ron=100 Roff=100T Vfwd=1 epsilon=50m noiseless)
 .ends LTC6268
 *
+.subckt LTC6268-10 1 2 3 4 5 6
+A1 2 REF 0 0 0 0 0 0 OTA g=0 in=.7p*uplim((freq/13Meg)**.95,12,.5)
+B1 0 N004 I=10u*dnlim(uplim(V(1),V(4)-.4,.1), V(5)-.2, .1)+1n*V(1)-7.501009n
+B2 N004 0 I=10u*dnlim(uplim(V(2),V(4)-.39,.1), V(5)-.21, .1)+1n*V(2)
+C10 N004 0 .1f Rpar=100K noiseless
+M1 3 N010 5 5 NI temp=27
+C2 4 3 10f
+M2 3 N005 4 4 PI temp=27
+C3 4 N005 10f Rser=5Meg noiseless
+C11 3 5 10f
+C12 N010 5 10f Rser=5Meg noiseless
+D6 N010 5 DLIMN
+A4 0 N004 0 0 0 0 N006 0 OTA g=1m linear en=4n*dnlim((50k/freq)**.31,1,.1)*dnlim((900k/freq)**.15,1,.1)*dnlim((freq/80Meg)**.22,1,.1) Vhigh=1e308 Vlow=-1e308
+C16 N008 3 80f
+G1 5 N010 N008 REF 100n
+C7 4 1 225f
+C17 0 N006 120f Rpar=1k noiseless
+G4 0 N007 N006 0 1m
+D14 4 N005 DLIMP
+C4 2 1 100f
+A6 N007 0 N009 REF REF REF N008 REF OTA g=2.5m asym isource=85.7u isink=-127.4u Rout=40k Vlow=-1e308 Vhigh=1e308
+D9 4 6 DSHUT
+A5 REF N008 N013 REF REF REF N005 REF OTA g=100n ref=-150m linear Vlow=-1e308 Vhigh=1e308
+C14 4 5 20p Rpar=12.8k noiseless
+S4 4 5 N013 REF SWP
+C13 4 5 10p
+A3 6 5 REF REF REF REF N013 REF SCHMITT vt=1.2 vh=.2 trise=900n tfall=800n
+G2 0 REF 4 0 50m
+G3 0 REF 5 0 50m
+C19 REF 0 100p Rpar=10 noiseless
+GESD1 2 4 2 4 1 vto=600m dir=1
+GESD2 5 2 5 2 1 vto=600m dir=1
+GESD3 1 4 1 4 1 vto=600m dir=1
+GESD4 5 1 5 1 1 vto=600m dir=1
+D1 3 4 DESD
+D2 5 3 DESD
+C1 4 2 225f
+C5 1 5 225f
+C6 2 5 225f
+C8 0 N007 120f Rpar=1k noiseless
+A2 1 REF 0 0 0 0 0 0 OTA g=0 in=.7p*uplim((freq/13Meg)**.95,12,.5)
+A7 N013 REF REF REF REF REF N009 REF BUF trise=100n
+.model NI VDMOS(Vto=300m kp=100m lambda=.01)
+.model PI VDMOS(Vto=-300m kp=100m lambda=.01 pchan is=0)
+.model DSHUT D(Ron=1k Roff=1g Vfwd=.6 epsilon=100m ilimit=2u noiseless)
+.model DIN D(Ron=300 Roff=100g Vfwd=.8 Vrev=.8 epsilon=100m revepsilon=100m noiseless)
+.model DLIMP D(Ron=100k Roff=100Meg Vfwd=1.4 Vrev=340m epsilon=200m revepsilon=100m noiseless)
+.model DLIMN D(Ron=1Meg Roff=100Meg Vfwd=800m Vrev=340m epsilon=200m revepsilon=100m  noiseless)
+.model SWP SW(Roff=1G Ron=500 vt=.5 vh=-.1 ilimit=5.6m noiseless)
+.model DESD D(Ron=100 Roff=100T Vfwd=1 epsilon=50m noiseless)
+.ends LTC6268-10
+*
 .subckt LTC6363 1 2 3 4 5 6 7 8
-M1 4 N021 6 6 NI temp=27
-D5 N021 6 DLIMN
-M2 4 N011 3 3 PI temp=27
-D8 3 N011 DLIMP
-C3 3 N011 .04f Rser=2Meg noiseless
-A3 N012 N014 6 6 6 6 N011 6 OTA g=200n ref=-41m linear vlow=-1e308 vhigh=1e308
-A5 N006 0 N012 N012 N012 N012 N014 N012 OTA g=1m linear cout=1f Vhigh=1e308 Vlow=-1e308
-G1 6 N021 N014 N012 200n
-D9 N014 N012 DLIM
+M1 4 N019 6 6 NI temp=27
+D5 N019 6 DLIMN
+M2 4 N010 3 3 PI temp=27
+D8 3 N010 DLIMP
+C3 3 N010 .04f Rser=2Meg noiseless
+A3 N011 N013 6 6 6 6 N010 6 OTA g=200n ref=-41m linear vlow=-1e308 vhigh=1e308
+A5 N009 0 N011 N011 N011 N011 N013 N011 OTA g=100u linear cout=1f Vhigh=1e308 Vlow=-1e308
+G1 6 N019 N013 N011 200n
+D9 N013 N011 DLIM
 C7 3 8 .1p Rser=1k Rpar=1G noiseless
 C13 3 6 10p
-S1 N014 N012 0 N010 SHUT2
+S1 N013 N011 0 N008 SHUT2
 C17 6 7 500f
-S4 N011 3 0 N010 SHUT1
-S2 6 N021 0 N010 SHUT1
-A2 7 N015 0 0 0 0 N010 0 SCHMITT trise=4u tfall=2u vt=.8 vh=.4
+S4 N010 3 0 N008 SHUT1
+S2 6 N019 0 N008 SHUT1
+A2 7 N014 0 0 0 0 N008 0 SCHMITT trise=4u tfall=2u vt=.8 vh=.4
 D6 1 3 DESD
 D7 6 1 DESD
 D10 8 3 DESD
 D11 6 8 DESD
 A1 0 8 0 0 0 0 0 0 OTA g=0 in=550f ink=3.3k
-M3 5 N029 6 6 NI temp=27
-D3 N029 6 DLIMN
-M4 5 N026 3 3 PI temp=27
-D12 3 N026 DLIMP
-A6 N012 XNP 6 6 6 6 N026 6 OTA g=200n ref=-41m linear vlow=-1e308 vhigh=1e308
-A7 0 N006 N012 N012 N012 N012 XNP N012 OTA g=1m linear cout=1f Vhigh=1e308 Vlow=-1e308
-G5 6 N029 XNP N012 200n
-D13 XNP N012 DLIM
-S3 XNP N012 0 N010 SHUT2
-S5 N026 3 0 N010 SHUT1
-S6 6 N029 0 N010 SHUT1
+M3 5 N028 6 6 NI temp=27
+D3 N028 6 DLIMN
+M4 5 N024 3 3 PI temp=27
+D12 3 N024 DLIMP
+A6 N011 N026 6 6 6 6 N024 6 OTA g=200n ref=-41m linear vlow=-1e308 vhigh=1e308
+A7 0 N009 N011 N011 N011 N011 N026 N011 OTA g=100u linear cout=1f Vhigh=1e308 Vlow=-1e308
+G5 6 N028 N026 N011 200n
+D13 N026 N011 DLIM
+S3 N026 N011 0 N008 SHUT2
+S5 N024 3 0 N008 SHUT1
+S6 6 N028 0 N008 SHUT1
 R3 4 5 2Meg noiseless
-A8 0 N027 0 0 0 0 N019 0 OTA g=10m linear en=14.3n enk=1.1k Rout=1k Cout=20p ref=-586u Vlow=-1e308 Vhigh=1e308
-R5 3 2 3.6Meg
-R6 2 6 3.6Meg
-G6 N012 XNP 0 N019 100µ
-G7 N012 N014 0 N019 100µ
-D14 N019 0 DCML
-C12 N021 6 .04f Rser=2Meg noiseless
-C15 3 N026 .04f Rser=2Meg noiseless
-C19 N029 6 .04f Rser=2Meg noiseless
-A4 0 N008 0 0 0 0 N009 0 OTA g=1m linear en=2.9n enk=4k Rout=1k Cout=500f Vlow=-1e308 Vhigh=1e308
+A8 0 N025 0 0 0 0 N016 0 OTA g=10m linear en=14.3n enk=1.1k Rout=1k Cout=20p ref=-586u Vlow=-1e308 Vhigh=1e308
+R5 3 2 3.6Meg noiseless
+R6 2 6 3.6Meg noiseless
+G6 N011 N026 0 N016 100µ
+G7 N011 N013 0 N016 100µ
+D14 N016 0 DCML
+C12 N019 6 .04f Rser=2Meg noiseless
+C15 3 N024 .04f Rser=2Meg noiseless
+C19 N028 6 .04f Rser=2Meg noiseless
+A4 0 N006 0 0 0 0 N007 0 OTA g=1m linear en=2.9n enk=4k Rout=1k Cout=1p Vlow=-1e308 Vhigh=1e308
 C1 1 8 2p Rpar=40k noiseless
 C2 3 4 1p Rpar=100Meg noiseless
 C8 4 6 1p Rpar=100Meg noiseless
 C9 3 5 1p Rpar=100Meg noiseless
 C11 5 6 1p Rpar=100Meg noiseless
-C14 N014 4 42p Rser=1.1k noiseless
-C16 5 XNP 42p Rser=1.1k noiseless
+C14 N013 4 5p Rser=500 noiseless
+C16 5 N026 5p Rser=500 noiseless
 R10 3 7 10Meg noiseless
-D2 3 6 DPOW1
-S7 6 3 N010 0 SPOWR1
+S7 6 3 N008 0 SPOWR1
 A10 0 1 0 0 0 0 0 0 OTA g=0 in=550f ink=3.3k
 D1 2 3 DESD
 D4 6 2 DESD
 D17 7 3 DESD
 D18 6 7 DESD
-B1 0 N008 I=10u*dnlim(uplim(V(8),V(3)-1.3,.1), V(6)-.3, .1)+1n*V(8)
-B2 N008 0 I=10u*dnlim(uplim(V(1),V(3)-1.29,.1), V(6)-.31, .1)+1n*V(1)
-C20 N008 0 .1f Rpar=100K noiseless
-G8 0 N012 6 0 .5m
-G9 0 N012 3 0 .5m
-C21 N012 0 200p Rpar=1K noiseless
-D15 0 N007 DLIMI
+B1 0 N006 I=10u*dnlim(uplim(V(8),V(3)-1.3,.1), V(6)-.3, .1)+1n*V(8)
+B2 N006 0 I=10u*dnlim(uplim(V(1),V(3)-1.29,.1), V(6)-.31, .1)+1n*V(1)
+C20 N006 0 .1f Rpar=100K noiseless
+G8 0 N011 6 0 .5m
+G9 0 N011 3 0 .5m
+C21 N011 0 200p Rpar=1K noiseless
 C4 3 1 .1p Rser=1k Rpar=1G noiseless
 C5 8 6 .1p Rser=1k Rpar=1G noiseless
 C6 1 6 .1p Rser=1k Rpar=1G noiseless
-C24 N017 0 33p Rpar=10k noiseless
-G4 0 N017 N016 0 100µ
-C25 8 N017 12p Rser=1 noiseless
-C18 N005 1 12p Rser=1 noiseless
-D19 N007 N005 DLS
-D20 N016 N017 DLS
-C22 N005 0 33p Rpar=10k noiseless
-G10 0 N005 N007 0 100µ
-G2 0 N006 N005 0 100µ
-L1 N006 0 62.5m Rser=27.5k Rpar=15.71k noiseless
-C10 N011 4 .15f Rser=2Meg noiseless
-C23 4 N021 .15f Rser=2Meg noiseless
-C26 N026 5 .15f Rser=2Meg noiseless
-C27 5 N029 .15f Rser=2Meg noiseless
-D16 0 N016 DLIMI
-G3 0 N007 N009 0 49m
-C28 N007 0 10f Rpar=1Meg
-G11 0 N016 0 N009 49m
-C29 N016 0 10f Rpar=1Meg
-B3 0 N027 I=10u*dnlim(uplim(V(2),V(3)-.4,.1), V(6)+.42, .1)
-B4 N027 0 I=5u*(V(4)+V(5))
-C30 N027 0 .1f Rpar=100K noiseless
+C22 N005 0 7p Rpar=20k noiseless
+C10 N010 4 .15f Rser=2Meg noiseless
+C23 4 N019 .15f Rser=2Meg noiseless
+C26 N024 5 .15f Rser=2Meg noiseless
+C27 5 N028 .15f Rser=2Meg noiseless
+B3 0 N025 I=10u*dnlim(uplim(V(2),V(3)-.4,.1), V(6)+.42, .1)
+B4 N025 0 I=5u*(V(4)+V(5))
+C30 N025 0 .1f Rpar=100K noiseless
 B7 3 1 I=(272n+25n*V(1,6))*(.5+.5*tanh((V(3,1)-500m)/200m))+ 25n/dnlim(V(1,6)+.06,.02,.01)
 B8 3 8 I=(272n+25n*V(8,6))*(.5+.5*tanh((V(3,8)-500m)/200m))+ 25n/dnlim(V(8,6)+.06,.02,.01)
 D21 3 7 DSPU
-R4 N005 N015 10Meg
-R9 N015 6 10Meg
-D22 3 6 DPOW2
-S8 6 3 N010 0 SPOWR2
-.model DPOW1 D(Ron=1k Roff=1G Vfwd=2 epsilon=.1 ilimit=7.7u noiseless)
-.model DPOW2 D(Ron=129k Roff=1G Vfwd=3.3 epsilon=1 noiseless)
-.model SPOWR1 SW(level=2 Ron=200 Roff=1g vt=.5 vh=-.1 ilimit=1.026m)
+R4 N005 N014 10Meg noiseless
+D22 3 6 DPOW
+S8 6 3 N008 0 SPOWR2
+A9 0 N007 0 0 0 0 N005 0 OTA g=1.9m linear vlow=-2.1 vhigh=2.1
+A11 N007 0 0 0 0 0 N017 0 OTA g=1.9m linear vlow=-2.1 vhigh=2.1
+G3 0 N009 N005 0 100µ
+L1 N009 0 318µ Rser=10k
+D19 N009 0 DSLIM
+C18 N005 1 2p
+C25 8 N017 2p
+C24 N017 0 7p Rpar=20k noiseless
+R9 N014 6 10Meg noiseless
+.model DPOW D(Ron=240k Roff=1G Vfwd=1 epsilon=1 noiseless)
+.model SPOWR1 SW(level=2 Ron=200 Roff=1g vt=.5 vh=-.1 ilimit=1.026m noiseless)
 .model SPOWR2 SW(Ron=49k Roff=1G vt=.5 vh=-.1 noiseless)
-.model DSPU D(Ron=100k Roff=1g Vfwd=100m epsilon=100m ilimit=10u)
+.model DSPU D(Ron=100k Roff=1g Vfwd=100m epsilon=100m ilimit=10u noiseless)
 .model NI VDMOS(Vto=300m kp=50m lambda=.0001)
 .model PI VDMOS(Vto=-300m Kp=50m lambda=.0001 pchan)
-.model DLS D(Ron=100 Roff=1G Vfwd=.3 Vrev=.3 epsilon=100m revepsilon=100m noiseless)
 .model DLIMN D(Ron=100k Roff=100Meg Vfwd=1.45 Vrev=-300m epsilon=10m revepsilon=10m  noiseless)
 .model DLIMP D(Ron=100k Roff=100Meg Vfwd=1.76 Vrev=-300m  epsilon=10m revepsilon=10m noiseless)
 .model SHUT1 SW(Ron=100k Roff=100G vt=-.8 vh=-100m Vser=300m noiseless)
 .model SHUT2 SW(Ron=1k Roff=100G vt=-.8 vh=-100m noiseless)
 .model DCML D(Ron=10 Roff=1k Vfwd=500m epsilon=10m Vrev=500m revepsilon=10m noiseless)
-.model DLIM D(Ron=700 Roff=70k Vfwd=50m Vrev=50m epsilon=1m revepsilon=1m noiseless)
-.model DLIMI D(Ron=1 Roff=1k Vfwd=.42 Vrev=.42 epsilon=50m revepsilon=50m noiseless)
+.model DLIM D(Ron=7k Roff=700k Vfwd=50m Vrev=50m epsilon=1m revepsilon=1m noiseless)
+.model DSLIM D(Ron=100 Roff=200k vfwd=1.89 epsilon=100m vrev=1.89 revepsilon=100m noiseless)
 .model DESD D(Ron=100 Roff=1G Vfwd=.7 epsilon=.1 noiseless)
 .ends LTC6363

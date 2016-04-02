@@ -22,7 +22,7 @@ WINDOW 0 52 -63 Left 2
 WINDOW 3 56 56 Left 2
 SYMATTR Value LTC6268-10
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC6.lib
+SYMATTR SpiceModel LTC2.lib
 SYMATTR Value2 LTC6268-10
 SYMATTR Description 4GHz Ultra-Low Bias Current FET Input Op Amp
 PIN -32 32 NONE 0

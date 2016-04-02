@@ -1,4 +1,4 @@
-* Copyright © 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015 Linear Technology Corporation.   All rights reserved.
+* Copyright (c) 2000-2016 Linear Technology Corporation.   All rights reserved.
 *
 .model AO6407 VDMOS(pchan Rg=3 Rd=14m Rs=10m Vto=-.8 Kp=32 Cgdmax=.5n Cgdmin=.07n Cgs=.9n Cjo=.26n Is=26p Rb=17m mfg=Alpha_&_Omega Vds=-20 Ron=34m Qg=13n)
 .model AO6408 VDMOS(Rg=3 Rd=4.8m Rs=3.6m Vto=1 Kp=90 Cgdmax=.7n Cgdmin=.25n Cgs=1n Cjo=.36n Is=36p Rb=6m mfg=Alpha_&_Omega Vds=20 Ron=12m Qg=18n)
@@ -902,3 +902,6 @@
 .model RQ1E050RP VDMOS(pchan Rg=27 Vto=-2.282 Rd=8.3m Rs=10m Rb=20m Kp=33.63 Lambda=50m Cgdmin=120p Cgdmax=500p A=0.5 Cgso=1.14n Is=24.996p N=1.132 Cjo=116p M=662.09m Vj=756.09m TT=25.5n mfg=Rohm Vds=-30 Ron=22m Qg=28n)
 .model QS8J4 VDMOS(pchan Rg=40 Vto=-2.169 Rd=14.1m Rs=20m Rb=25m Kp=21.66 Lambda=50m Cgdmin=65p Cgdmax=400p A=0.4 Cgso=656p Is=5.5256p N=1.075 Cjo=90.936p M=856.68m Vj=822.62m TT=18n mfg=Rohm Vds=-30 Ron=40m Qg=13n)
 .model RQ1A070ZP VDMOS(pchan Rg=13 Vto=-0.90995 Rd=1.92m Rs=4m Rb=35m Kp=131.9 Lambda=50m Cgdmin=600p Cgdmax=2.6n A=0.5 Cgso=6622p Is=5.1096n N=1.217 Cjo=68.219p M=173.77m Vj=914.58m TT=38n mfg=Rohm Vds=-12 Ron=8.0m Qg=58n)
+.model BSP89 VDMOS(Rg=3 Rd=2.1 Rs=1.7 mtriode=.8 lambda=0.01 Vto=1.6 ksubthres=70m Kp=1.1 Cgdmax=300p Cgdmin=3p A=1 Cgs=70p Cjo=10p M=.25 Vj=.9 Is=600f Rb=.3 mfg=Infineon Vds=240 Ron=4.9 Qg=4.3n)
+.model FDB045AN08A0 VDMOS(Rg=3 Rd=1.89m Rs=1.2m Vto=4.2 subthres=.1 mtriode=1.55 Kp=140 Cgdmax=1.8n Cgdmin=100p A=.2 Cgs=6n cjo=4.7n M=.58 Is=6p Rb=4m mfg=Fairchild Vds=75 Ron=3.9m Qg=92n)
+.model PSMN0R930YLD VDMOS(Rg=1.08 Vto=2.15 Rd=160u Rs=10u Rb=650u Kp=1000 Theta=.5 Mtriode=1.4 Ksubthres=.1 Lambda=.01 Cgdmin=300p Cgdmax=2.9n A=0.6 Cgs=6.8n Cjo=11.0n M=.5 Is=30p VJ=.76 N=1 mfg=NXP Vds=30 Ron=.79m Qg=109n)

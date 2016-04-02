@@ -2112,3 +2112,115 @@ XI1 1 8 5 SWITCHP
 .MODEL DX D(IS=1E-14 RS=5)
 .MODEL P PMOS(LEVEL=2 KF=2.5E-26 KP=16E-6 VTO=-.7 LAMBDA=.001 RD=8)
 .MODEL N NMOS(LEVEL=2 KF=3.5E-28 KP=52E-6 VTO= .7 LAMBDA=.001 RD=5)
+*
+.subckt LTC6754 1 2 3 4 5 6 7 8 9
+B1 0 VDIN I=10u*dnlim(uplim(V(4),V(2)+.15,.1), V(3)-.2 ,.1)+1n*V(4)
+B2 VDIN 0 I=10u*dnlim(uplim(V(5),V(2)+.15,.1), V(3)-.21, .1)+1n*V(5)
+C1 VDIN 0 .5f Rpar=470k
+D5 0 VDH0 DLAT
+C4 5 3 .55p
+C10 4 3 .55p
+C7 1 9 200f
+C8 9 3 200f
+C5 2 5 .55p Rpar=6.5Meg
+R3 2 6 378k
+A6 N005 0 N002 0 0 0 VDH0 0 OTA g=500u linear Vlow=-1e308 Vhigh=1e308
+D6 0 N005 DLAT
+C3 N005 0 1p
+G1 0 N005 0 VDH0 500µ
+R4 N004 7 14.5k
+A8 7 3 0 0 0 N002 0 0 SCHMITT vt=.4 vh=0 trise=1n tfall=1.5n
+C11 VH 0 1p Rpar=2k
+B3 0 VDIN I=5u*V(VH)*tanh(V(VDH0)/1m)
+S6 0 VH 7 3 SHYOFF
+D1 VDIN 0 DVGAIN
+D3 7 3 DBLE
+D2 2 5 DBIASR
+D4 5 3 DBIASF
+S2 3 2 ON 0 SVCCP
+D7 2 4 DBIASR
+D8 4 3 DBIASF
+C15 1 8 200f
+C16 8 3 200f
+D10 2 3 DBURNSDI
+R1 2 3 19.2k
+D11 1 3 DBURNSDO
+S8 3 1 ON 0 SVDDP
+S9 3 1 ON 0 SVDDP2
+S10 0 VDH0 0 ON SOFF
+D12 3 8 DESD
+D13 8 1 DESD
+D14 9 1 DESD
+D15 3 9 DESD
+D17 5 2 DESD
+D16 3 5 DESD
+D18 5 4 DBIASC
+C19 2 4 .55p Rpar=6.5Meg
+D9 4 2 DESD
+D19 3 4 DESD
+D20 6 2 DESD
+D21 3 6 DESD
+C6 6 3 500f
+R2 9 Vcm 10Meg
+R5 Vcm 8 10Meg
+M1 N011 N011 3 3 NPD
+M2 9 N011 3 3 NPD M=100
+B4 3 N011 I=(18u+1u*V(ICM))*(1-V(VDH))
+D22 3 N011 DLIM1
+M3 N009 N009 1 1 PPU
+M4 9 N009 1 1 PPU M=100
+B5 N009 1 I=(18u-1u*V(ICM))*(V(VDH)+1)
+D23 N009 1 DLIM1
+M5 N015 N015 3 3 NPD
+M6 8 N015 3 3 NPD M=100
+B6 3 N015 I=(18u+1u*V(ICM))*(V(VDH)+1)
+D24 3 N015 DLIM1
+M7 N013 N013 1 1 PPU
+M8 8 N013 1 1 PPU M=100
+B7 N013 1 I=(18u-1u*V(ICM))*(1-V(VDH))
+D25 N013 1 DLIM1
+C2 VDH0 0 40f
+B8 0 VDH0 I=100u*tanh(V(VDIN)/50m)*uplim(dnlim(100m*V(1,3)+1,1,.1),1.5,.1)
+A2 0 VDH0 0 0 0 0 VDH 0 OTA g=2.5m iout=5m Rout=1k Cout=700f vlow=-1 vhigh=1
+C9 VDH0 0 q=120f*dnlim(x,.7,.1)**1.5-100f*dnlim(-x,.7,.1)**1.5
+D26 VDIN 0 DVLIM
+C12 9 8 3p
+G2 0 VH 7 3 Table(784m 40.3u 959m 37.5u 1.036 24u 1.079 13u 1.106 11u 1.14 7u 1.1581 5u 1.25 4.5u 1.45 0)
+S1 1 N009 0 ON SSHUT
+S3 N011 3 0 ON SSHUT
+S4 1 N013 0 ON SSHUT
+S7 N015 3 0 ON SSHUT
+A1 6 3 0 0 0 0 N014 0 SCHMITT vt=1 vh=.1 trise=111.5n tfall=110.5n
+S11 ICM 0 0 ON SSHUT2
+A3 3 Vcm 0 0 0 0 ICM 0 OTA g=100m iout=18u ref=-1.26 Rout=1Meg Cout=1f vlow=-1e308 vhigh=1e308
+A4 ONF 0 0 0 0 0 ON 0 BUF trise=10n ref=.5 vlow=-1 vhigh=1
+D27 2 6 DSHT
+D28 3 7 DESD
+D29 7 2 DESD
+C13 1 3 5p Rpar=83k
+C14 N004 3 1p Rpar=100
+G3 3 N004 ONF 0 12.52m
+A5 2 3 0 0 0 0 PowOK 0 SCHMITT vt=2.4 vh=0 trise=200n
+A7 PowOK 0 0 0 N014 0 ONF 0 AND trise=111.5n tfall=110.5n
+.model SVCCP SW(level=2 Ron=50 Roff=100Meg Vt=.5 Vh=-.2 ilimit=1.624m)
+.model SVDDP SW(level=2 Ron=10 Roff=100Meg vt=.5 vh=-.2 ilimit=5.96m)
+.model SVDDP2 SW(Ron=4.17k Roff=100Meg vt=.5 vh=-.2)
+.model DVGAIN D(Ron=15k Roff=2Meg vfwd=15.3m epsilon=10m vrev=15.3m revepsilon=10m)
+.model DVLIM D(Ron=1k Roff=100Meg vfwd=60m epsilon=10m vrev=60m revepsilon=10m)
+.model SHYOFF SW(Ron=1 Roff=2k vt=1.65 vh=-100m)
+.model DBLE D(Ron=31k Roff=1Meg vfwd=1.3 epsilon=100m)
+.model DLAT D(Ron=1 Roff=76k Vfwd=1 Vrev=1 epsilon=.9 revepsilon=.9)
+.model SSHUT SW(Ron=1k Roff=1G vt=0 vh=-.3)
+.model SSHUT2 SW(Ron=1k Roff=1G vt=-.3 vh=-.3)
+.model DBIASF D(Ron=300k Roff=1G vfwd=-400m epsilon=200m ilimit=.700u )
+.model DBIASR D(Ron=80k Roff=1G vfwd=1 epsilon=150m ilimit=1.8u )
+.model SOFF SW(Ron=1 Roff=100Meg vt=-.5 vh=-.2)
+.model DESD D(Ron=100 Roff=1G vfwd=650m epsilon=500m)
+.model DBURNSDI D(Ron=100 Roff=1Meg vfwd=1.6 epsilon=500m ilimit=500u)
+.model DBURNSDO D(Ron=100 Roff=1Meg vfwd=1.6 epsilon=500m ilimit=209u)
+.model DBIASC D(Roff=100Meg Ron=55k vfwd=10u vrev=10u epsilon=10u revepsilon=10u  ilimit=1u revilimit=1u)
+.model NPD VDMOS(kp=72.45u ksubthres=.1 vto=1)
+.model PPU VDMOS(kp=72.45u vto=-1 ksubthres=.1 pchan)
+.model DLIM1 D(Ron=100 Roff=1G vfwd=1 epsilon=500m)
+.model DSHT D(Ron=10k Roff=100Meg vfwd=2.2 epsilon=500m ilimit=.8u)
+.ends LTC6754

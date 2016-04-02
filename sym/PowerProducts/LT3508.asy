@@ -1,9 +1,9 @@
 Version 4
 SymbolType CELL
 RECTANGLE Normal -208 -208 208 208
-TEXT 0 0 Center 0 LT
-WINDOW 0 0 -64 Center 0
-WINDOW 3 0 64 Center 0
+TEXT 0 0 Center 2 LT
+WINDOW 0 0 -64 Center 2
+WINDOW 3 0 64 Center 2
 SYMATTR Value LT3508
 SYMATTR Prefix X
 SYMATTR SpiceModel LT3508.sub
@@ -12,14 +12,14 @@ SYMATTR Description Dual Monolithic 1.4A Step-Down Switching Regulator
 PIN 208 -160 RIGHT 8
 PINATTR PinName Boost1
 PINATTR SpiceOrder 1
-PIN 64 -208 TOP 6
+PIN 0 -208 TOP 6
 PINATTR PinName _SHDN
 PINATTR SpiceOrder 2
 PIN 208 -96 RIGHT 8
 PINATTR PinName SW1
 PINATTR SpiceOrder 3
-PIN -64 -208 TOP 6
-PINATTR PinName Vin
+PIN 96 -208 TOP 6
+PINATTR PinName Vin1
 PINATTR SpiceOrder 4
 PIN 64 208 BOTTOM 8
 PINATTR PinName Rt
@@ -57,3 +57,6 @@ PINATTR SpiceOrder 15
 PIN 208 -32 RIGHT 8
 PINATTR PinName FB1
 PINATTR SpiceOrder 16
+PIN -96 -208 TOP 6
+PINATTR PinName Vin2
+PINATTR SpiceOrder 17

@@ -1,14 +1,14 @@
 Version 4
 SymbolType CELL
 RECTANGLE Normal -192 -496 192 496
-TEXT 0 0 Center 0 LT
-WINDOW 0 0 -192 Center 0
-WINDOW 3 0 192 Center 0
+TEXT 0 0 Center 2 LT
+WINDOW 0 0 -192 Center 2
+WINDOW 3 0 192 Center 2
 SYMATTR Value LTC3633
 SYMATTR Prefix X
 SYMATTR SpiceModel LTC3633.sub
 SYMATTR Value2 LTC3633
-SYMATTR Description Dual Channel 3A, 15V Monolithic Synchronous Step-Down Regulator
+SYMATTR Description Dual Channel 3A, 15V Monolithic Synchronous Step-Down Regulator \n\nPower On Reset timer is 1/16th of the real value in the part
 PIN -192 -240 LEFT 8
 PINATTR PinName Pgood1
 PINATTR SpiceOrder 1

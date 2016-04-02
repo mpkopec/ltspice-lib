@@ -1,0 +1,85 @@
+* Copyright © Linear Technology Corp. 2016.  All rights reserved.
+*
+.subckt LT1389-1.25 1 2
+C3 1 2 10p Rpar=8Meg noiseless
+R1 1 N002 3Meg tc = 0 -.60u 2n 80p noiseless
+D1 2 1 Y
+R3 N002 2 3Meg noiseless
+A1 N002 2 2 2 2 2 N003 2 OTA G=100u Iout=1u Ref=.624715543 en=252n enk=10 Vhigh=0 Vlow=-800m
+G1 2 G 2 N003 .1µ
+C1 N003 N002 20p Rser=30Meg Rpar=3.54G noiseless
+B1 1 2 I=Max((.5+.5*tanh((V(1,2)-500m)/50m))*20m*(V(G,2))**3.5,0)
+C4 G 2 3p Rpar=10Meg noiseless
+C6 G 2 q=uplim(2p*X,200f,10f)
+D2 2 N003 DLIM
+C2 1 N004 10p
+C7 N004 2 1p Rpar=10k noiseless
+S1 N002 1 N004 2 SLS
+C5 1 G 500f
+.model Y D(Is=5e-12 N=1.2 Rs=6 noiseless)
+.model DLIM D(Ron=1k Roff=1T vfwd=600m epsilon=100m noiseless)
+.model SLS SW(Ron=3Meg Roff=1T vt=100u vh=-10u noiseless)
+.ends LT1389-1.25
+*
+.subckt LT1389-2.5 1 2
+C3 1 2 10p Rpar=10.435Meg noiseless
+R1 1 N002 6Meg tc = 0 -.60u -2n 40p noiseless
+D1 2 1 Y
+R3 N002 2 6Meg noiseless
+A1 N002 2 2 2 2 2 N003 2 OTA G=100u Iout=1u Ref=1.24912357 en=505n enk=10 Vhigh=0 Vlow=-800m
+G1 2 G 2 N003 .1µ
+C1 N003 N002 20p Rser=60Meg Rpar=4.4G noiseless
+B1 1 2 I=Max((.5+.5*tanh((V(1,2)-500m)/50m))*20m*(V(G,2))**3.4,0)
+C4 G 2 3p Rpar=10Meg noiseless
+C6 G 2 q=uplim(3p*X,200f,10f)
+D2 2 N003 DLIM
+C2 1 N004 10p
+C7 N004 2 1p Rpar=10k noiseless
+S1 N002 1 N004 2 SLS
+C5 1 G 100f
+.model Y D(Is=5e-12 N=1.2 Rs=6 noiseless)
+.model DLIM D(Ron=1k Roff=1T vfwd=600m epsilon=100m noiseless)
+.model SLS SW(Ron=3Meg Roff=1T vt=100u vh=-10u noiseless)
+.ends LT1389-2.5
+*
+.subckt LT1389-4.096 1 2
+C3 1 2 10p Rpar=12Meg noiseless
+R1 1 N002 TTC 12Meg tc = 0 -.55u -1.5n 70p noiseless
+D1 2 1 Y
+R3 N002 2 12Meg noiseless
+A1 N002 2 2 2 2 2 N003 2 OTA G=100u Iout=1u Ref=2.04795028 en=807n enk=10 Vhigh=0 Vlow=-5.5
+G1 2 G 2 N003 .1µ
+C1 N003 N002 2p Rser=3.5G Rpar=80G noiseless
+B1 1 2 I=Max((.5+.5*tanh((V(1,2)-500m)/50m))*80u*(V(G,2))**2.2,0)
+C4 G 2 3p Rpar=10Meg noiseless
+C6 G 2 q=uplim(3p*X,200f,10f)
+D2 2 N003 DLIM
+C2 1 N004 10p
+C7 N004 2 1p Rpar=25k noiseless
+S1 N002 1 N004 2 SLS
+.model Y D(Is=5e-12 N=1.2 Rs=6 noiseless)
+.model DLIM D(Ron=1k Roff=1T vfwd=5 epsilon=100m noiseless)
+.model SLS SW(Ron=2Meg Roff=1T vt=100u vh=-10u noiseless)
+.model TTC R(tnom=40)
+.ends LT1389-4.096
+*
+.subckt LT1389-5 1 2
+C3 1 2 10p Rpar=12Meg noiseless
+R1 1 N002 TTC 12Meg tc = 0 -1.05u -3.8n 100p noiseless
+D1 2 1 Y
+R3 N002 2 12Meg noiseless
+A1 N002 2 2 2 2 2 N003 2 OTA G=100u Iout=1u Ref=2.499934 en=1.01u enk=10 Vhigh=0 Vlow=-5.5
+G1 2 G 2 N003 .1µ
+C1 N003 N002 2p Rser=3.5G Rpar=52G noiseless
+B1 1 2 I=Max((.5+.5*tanh((V(1,2)-500m)/50m))*80u*(V(G,2))**2.2,0)
+C4 G 2 3p Rpar=10Meg noiseless
+C6 G 2 q=uplim(3p*X,200f,10f)
+D2 2 N003 DLIM
+C2 1 N004 10p
+C7 N004 2 1p Rpar=25k noiseless
+S1 N002 1 N004 2 SLS
+.model Y D(Is=5e-12 N=1.2 Rs=6 noiseless)
+.model DLIM D(Ron=1k Roff=1T vfwd=5 epsilon=100m noiseless)
+.model SLS SW(Ron=2Meg Roff=1T vt=100u vh=-10u noiseless)
+.model TTC R(tnom=40)
+.ends LT1389-5

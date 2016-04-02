@@ -1,37 +1,123 @@
-* Copyright © Linear Technology Corp. 01/09/2007. All rights reserved.
+* Copyright © Linear Technology Corp. 2016.  All rights reserved.
 *
-* Note 1: For greater numerical accuracy in transient simulation, decrease
-* the maximum simulation time step.
-*
-* Note 2: This is a simplified model with no shutdown functionality.
-*
-* Node List (same as IC): GND IN1 IN2 VSS VOUT OUTRTN VDD
-.SUBCKT LTC1966 1 2 3 4 5 6 7
-ISUP1 7 1 1.55E-4
-ISUP2 1 4 1.2E-5
-GIN2 0 11 VALUE={1m*ABS(V(10)/(V(5,6)+4E-4)*MIN(V(5,6)*4.183,ABS(V(10))))}
-RIN1 10 0 1E3
-RIN2 11 13 3E5
-DS1 13 0 DS
-CIN1 10 0 1.6E-10
-DS3 12 31 DS
-RIN3 12 11 50
-EOUT 20 0 VALUE={ABS(V(11))+V(6)}
-ROUT 5 20 8.5E4
-COUT 5 6 8.7E-12
-GIN1 0 10 22 33 1E-3
-RIN4 11 0 1E3
-EVCC 31 0 VALUE={0.56*V(7,1)-0.750}
-CIN2 11 0 1E-11
-CS2 33 1 2.5E-12
-CS1 22 1 2.5E-12
+.subckt LTC1966 1 2 3 4 5 6 7
+RIN2 11A 13A 300K
+DS3 N001 N003 DS
+RIN3 N001 11A 50
+CIN2 11A 0 10p Rpar=1k
 DIN1 2 7 DIN
 DIN2 4 2 DIN
 DIN3 4 3 DIN
 DIN4 3 7 DIN
-RS1 22 2 6E3
-RS2 33 3 6E3
-RS3 22 33 1E8
-.MODEL DS D (IS=1E-16 RS=0 KF=0 XTI=0)
-.MODEL DIN D (IS=1E-13 RS=0 KF=0 XTI=0)
-.ENDS LTC1966
+RS1 22A 2 6K
+RS2 33A 3 6K
+RS3 22A 33A 100Meg
+CS3 33A 1 2.5p
+CS2 22A 1 2.5p
+B1 0 11A I=1m*ABS(V(10A)/MAX(V(5,6)+4E-4,4E-4)*MIN(MAX(V(5,6)*4.183,1m),ABS(V(10A))))
+DS1 13A 0 DS
+BVCC N003 0 V=.56*V(7,1)-.750
+B2 0 N008 I=10u*dnlim(uplim(V(22A),V(7)+.1,.1), V(4)-.1, .1)
+B3 N008 0 I=10u*dnlim(uplim(V(33A),V(7)+.1,.1), V(4)-.1, .1)
+C1 N008 0 1f Rpar=200K noiseless
+G1 0 10A N008 0 1m
+C2 10A 0 160p Rpar=1k
+D2 7 1 DSUP1
+D3 1 4 DSUP3
+D4 N008 0 DDIFLIM
+B4 7 5 I=11.765u*(ABS(V(11A))+V(6,1))
+G2 1 VDDMIN 1 4 .333m
+R1 VDDMIN 1 1k
+I1 1 VDDMIN 2.7m
+S2 N008 0 VDDMIN 7 SVDDOFF
+S3 N008 0 4 1 SVSSOFF
+G3 5 1 5 6 1m vto=1.05 dir=1
+COUT2 1 5 8.7p Rpar=85k
+S1 N008 0 4 6 SVSSOFF
+S5 0 11A 6 7 SREFLIM
+G4 5 1 5 7 100m vto=-10m dir=1
+.model DDIFLIM D(Ron=100 Roff=200k vfwd=2 epsilon=300m vrev=2 revepsilon=300m)
+.model SREFLIM SW(Ron=1 Roff=1G vt=-900m vh=-300m)
+.model SVDDOFF SW(Ron=1 Roff=1G vt=0 vh=-100m)
+.model SVSSOFF SW(Ron=1 Roff=1G vt=100m vh=-100m)
+.model DSUP1 D(ron=100 roff=1Meg vfwd=1.5 epsilon=500m ilimit=155u)
+.model DSUP3 D(ron=100 roff=1G vfwd=100m epsilon=100m ilimit=12u)
+.model DS D (IS=1E-16 RS=0 KF=0 XTI=0)
+.model DIN D (IS=1E-13 RS=0 KF=0 XTI=0)
+.ends LTC1966
+*
+.subckt LTC1967 1 2 3 4 5 6
+RIN2 11A 13A 150K
+DS3 N001 N003 DS
+RIN3 N001 11A 50
+CIN2 11A 0 10p Rpar=1k
+DIN1 2 6 DIN
+DIN2 1 2 DIN
+DIN3 1 3 DIN
+DIN4 3 6 DIN
+RS1 22A 2 2K
+RS2 33A 3 2K
+RS3 22A 33A 100Meg
+CS3 33A 1 800f
+CS2 22A 1 800f
+B1 0 11A I=1m*ABS(V(10A)/MAX(V(4,5)+2m,2m)*MIN(MAX(V(4,5)*4.183,1m),ABS(V(10A))))
+DS1 13A 0 DS
+BVCC N003 0 V=.5*V(6,1)-.750
+B2 0 N008 I=10u*dnlim(uplim(V(22A),V(6)+.1,.1), V(1)-.1, .1)
+B3 N008 0 I=10u*dnlim(uplim(V(33A),V(6)+.1,.1), V(1)-.1, .1)
+C1 N008 0 1f Rpar=200K noiseless
+G1 0 10A N008 0 1m
+C2 10A 0 400f Rpar=1k
+D2 6 1 DSUP1
+D4 N008 0 DDIFLIM
+B4 6 4 I=20u*(ABS(V(11A))+2m+V(5,1))
+S2 N008 0 1 6 SVDDOFF
+G3 4 1 4 5 1m vto=1.05 dir=1
+COUT2 1 4 8.7p Rpar=50K
+S1 N008 0 1 6 SVSSOFF
+G4 4 1 4 6 100m vto=-10m dir=1
+.model DDIFLIM D(Ron=100 Roff=200k vfwd=2 epsilon=300m vrev=2 revepsilon=300m)
+.model SVDDOFF SW(Ron=1 Roff=1G vt=-4.3 vh=-100m)
+.model SVSSOFF SW(Ron=1 Roff=1G vt=100m vh=-100m)
+.model DSUP1 D(ron=100 roff=1Meg vfwd=1.5 epsilon=500m ilimit=330u)
+.model DS D (IS=1E-16 RS=0 KF=0 XTI=0)
+.model DIN D (IS=1E-13 RS=0 KF=0 XTI=0)
+.ends LTC1967
+*
+.subckt LTC1968 1 2 3 4 5 6
+RIN2 11A 13A 150K
+DS3 N001 N003 DS
+RIN3 N001 11A 50
+CIN2 11A 0 10p Rpar=1k
+DIN1 2 6 DIN
+DIN2 1 2 DIN
+DIN3 1 3 DIN
+DIN4 3 6 DIN
+RS1 22A 2 2K
+RS2 33A 3 2K
+RS3 22A 33A 100Meg
+CS3 33A 1 800f
+CS2 22A 1 800f
+B1 0 11A I=1m*ABS(V(10A)/MAX(V(4,5)+2m,2m)*MIN(MAX(V(4,5)*4.183,1m),ABS(V(10A))))
+DS1 13A 0 DS
+BVCC N003 0 V=.5*V(6,1)-.750
+B2 0 N008 I=10u*dnlim(uplim(V(22A),V(6)+.1,.1), V(1)-.1, .1)
+B3 N008 0 I=10u*dnlim(uplim(V(33A),V(6)+.1,.1), V(1)-.1, .1)
+C1 N008 0 1f Rpar=200K noiseless
+G1 0 10A N008 0 1m
+C2 10A 0 15p Rpar=1k
+D2 6 1 DSUP1
+D4 N008 0 DDIFLIM
+B4 6 4 I=80u*(ABS(V(11A))+2m+V(5,1))
+S2 N008 0 1 6 SVDDOFF
+G3 4 1 4 5 1m vto=1.05 dir=1
+COUT2 1 4 8.7p Rpar=12.5K
+S1 N008 0 1 6 SVSSOFF
+G4 4 1 4 6 100m vto=-10m dir=1
+.model DDIFLIM D(Ron=100 Roff=200k vfwd=2 epsilon=300m vrev=2 revepsilon=300m)
+.model SVDDOFF SW(Ron=1 Roff=1G vt=-4.3 vh=-100m)
+.model SVSSOFF SW(Ron=1 Roff=1G vt=100m vh=-100m)
+.model DSUP1 D(ron=100 roff=1Meg vfwd=1.5 epsilon=500m ilimit=2.3m)
+.model DS D (IS=1E-16 RS=0 KF=0 XTI=0)
+.model DIN D (IS=1E-13 RS=0 KF=0 XTI=0)
+.ends LTC1968

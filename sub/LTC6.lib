@@ -1641,58 +1641,6 @@ G13 N021 N011 N021 N011 1m dir=1 vto=700m
 .model SVLIMD SW(Ron=1 Roff=1Meg vt=900m vh=-.2 noiseless)
 .ends LTC2057
 *
-.subckt LTC6268-10 1 2 3 4 5 6
-A1 2 REF 0 0 0 0 0 0 OTA g=0 in=.7p*uplim((freq/13Meg)**.95,12,.5)
-B1 0 N004 I=10u*dnlim(uplim(V(1),V(4)-.4,.1), V(5)-.2, .1)+1n*V(1)-7.501009n
-B2 N004 0 I=10u*dnlim(uplim(V(2),V(4)-.39,.1), V(5)-.21, .1)+1n*V(2)
-C10 N004 0 .1f Rpar=100K noiseless
-M1 3 N010 5 5 NI temp=27
-C2 4 3 10f
-M2 3 N005 4 4 PI temp=27
-C3 4 N005 10f Rser=5Meg noiseless
-C11 3 5 10f
-C12 N010 5 10f Rser=5Meg noiseless
-D6 N010 5 DLIMN
-A4 0 N004 0 0 0 0 N006 0 OTA g=1m linear en=4n*dnlim((30k/freq)**.47,1,.1)*dnlim((900k/freq)**.15,1,.1)*dnlim((freq/80Meg)**.22,1,.1) Vhigh=1e308 Vlow=-1e308
-C16 N008 3 80f
-G1 5 N010 N008 REF 100n
-C7 4 1 225f
-C17 0 N006 120f Rpar=1k noiseless
-G4 0 N007 N006 0 1m
-D14 4 N005 DLIMP
-C4 2 1 100f
-A6 N007 0 N009 REF REF REF N008 REF OTA g=2.5m asym isource=85.7u isink=-127.4u Rout=40k Vlow=-1e308 Vhigh=1e308
-D9 4 6 DSHUT
-A5 REF N008 N013 REF REF REF N005 REF OTA g=100n ref=-150m linear Vlow=-1e308 Vhigh=1e308
-C14 4 5 20p Rpar=12.8k noiseless
-S4 4 5 N013 REF SWP
-C13 4 5 10p
-A3 6 5 REF REF REF REF N013 REF SCHMITT vt=1.2 vh=.2 trise=900n tfall=800n
-G2 0 REF 4 0 50m
-G3 0 REF 5 0 50m
-C19 REF 0 100p Rpar=10 noiseless
-GESD1 2 4 2 4 1 vto=600m dir=1
-GESD2 5 2 5 2 1 vto=600m dir=1
-GESD3 1 4 1 4 1 vto=600m dir=1
-GESD4 5 1 5 1 1 vto=600m dir=1
-D1 3 4 DESD
-D2 5 3 DESD
-C1 4 2 225f
-C5 1 5 225f
-C6 2 5 225f
-C8 0 N007 120f Rpar=1k noiseless
-A2 1 REF 0 0 0 0 0 0 OTA g=0 in=.7p*uplim((freq/13Meg)**.95,12,.5)
-A7 N013 REF REF REF REF REF N009 REF BUF trise=100n
-.model NI VDMOS(Vto=300m kp=100m lambda=.01)
-.model PI VDMOS(Vto=-300m kp=100m lambda=.01 pchan is=0)
-.model DSHUT D(Ron=1k Roff=1g Vfwd=.6 epsilon=100m ilimit=2u noiseless)
-.model DIN D(Ron=300 Roff=100g Vfwd=.8 Vrev=.8 epsilon=100m revepsilon=100m noiseless)
-.model DLIMP D(Ron=100k Roff=100Meg Vfwd=1.4 Vrev=340m epsilon=200m revepsilon=100m noiseless)
-.model DLIMN D(Ron=1Meg Roff=100Meg Vfwd=800m Vrev=340m epsilon=200m revepsilon=100m  noiseless)
-.model SWP SW(Roff=1G Ron=500 vt=.5 vh=-.1 ilimit=5.6m noiseless)
-.model DESD D(Ron=100 Roff=100T Vfwd=1 epsilon=50m noiseless)
-.ends LTC6268-10
-*
 .subckt LTC2875 1 2 3 4 5 6 7 8
 C2 on1 0 1p Rpar=1k
 A1 on1 0 0 0 0 0 trigoff 0 BUF trise=4m tfall=100n

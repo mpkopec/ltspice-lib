@@ -1,6 +1,4 @@
-* Copyright © 1999, 2000, 2001, 2002, 2003, 2004, 2005, 2006, 2007, 2008 Linear Technology Corporation.   All rights reserved.
-*
-* Mike Engelhardt
+* Copyright (c) 2000-2016 Linear Technology Corporation.   All rights reserved.
 *
 .model 1N914 D(Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=OnSemi type=silicon)
 .model 1N4148 D(Is=2.52n Rs=.568 N=1.752 Cjo=4p M=.4 tt=20n Iave=200m Vpk=75 mfg=OnSemi type=silicon)
@@ -69,14 +67,14 @@
 .model ZLLS1000 D(Is=750n Rs=.13 N=1 Cjo=76p M=.3 Eg=.69 Iave=1 Vpk=40 mfg=Zetex type=Schottky)
 .model ZLLS2000 D(Is=2u Rs=.06 N=1 Cjo=182p M=.3 Eg=.69 Iave=1 Vpk=40 mfg=Zetex type=Schottky)
 .model PDS5100 D(Is=49.0u Rs=7.63m BV=100 IBV=200u Cjo=375p M=0.333 N=1.84 TT=21.6n Iave=5 Vpk=100 mfg=Diodes_Inc. type=Schottky)
-.model ES1D  D(Is=.5u Rs=25m N=2 Cjo=10.5p M=.4 tt=15n Iave=1 Vpk=200 mfg=Vishay type=silicon)
+.model ES1D D(Is=.5u Rs=25m N=2 Cjo=10.5p M=.4 tt=15n Iave=1 Vpk=200 mfg=Vishay type=silicon)
 .model SS24 D(Is=.4mA Rs=.016 N=2.1 Cjo=800p Eg=.69 Xti=2 Iave=2 Vpk=40 mfg=Fairchild type=Schottky)
 .model PT-121-B D(Is=4.352e-7 Rs=.032 N=8.37 Cjo=5n Xti=100 Iave=20A Vpk=5.3 mfg=Luminus type=LED)
-.model 1N5373B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=68  IBV=20m NBV=50 Vpk=68 mfg=OnSemi type=Zener)
+.model 1N5373B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=68 IBV=20m NBV=50 Vpk=68 mfg=OnSemi type=Zener)
 .model 1N5378B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=100 IBV=12m NBV=48 Vpk=100 mfg=OnSemi type=Zener)
-.model 1N5375B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=82  IBV=15m NBV=35 Vpk=82 mfg=OnSemi type=Zener)
-.model 1N5371B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=60  IBV=20m NBV=30 Vpk=60 mfg=OnSemi type=Zener)
-.model 1N5369B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=51  IBV=25m NBV=35 Vpk=51 mfg=OnSemi type=Zener)
+.model 1N5375B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=82 IBV=15m NBV=35 Vpk=82 mfg=OnSemi type=Zener)
+.model 1N5371B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=60 IBV=20m NBV=30 Vpk=60 mfg=OnSemi type=Zener)
+.model 1N5369B D(IS=1.54e-17 N=1 XTI=1 Rs=.1 Cjo=10p TT=10n BV=51 IBV=25m NBV=35 Vpk=51 mfg=OnSemi type=Zener)
 .model W5AP-LZMZ-5K8L D(Is=3.5e-17 Rs=.25 N=3.12 Cjo=2.75n Xti=150 Iave=2 Vpk=5 mfg=Lumileds type=LED)
 .model LUW-W5AP D(Is=6.572e-8 Rs=.147 N=7.267 Cjo=5n Xti=150 Iave=2000mA mfg=OSRAM type=LED)
 .model BAT46WJ D(Is=.1703u N=1.06 Rs=1.3 Cjo=35p Vj=.4 M=.5 Eg=.69 XTI=2 Iave=.25 Vpk=100 mfg=NXP type=Schottky)
@@ -300,13 +298,13 @@
 .model PTZ13B D(Is=4.4789E-15 N=1.0330 Rs=12.989E-3 Ikf=.78343 Cjo=301.84E-12 M=.37289 Vj=.81299 Isr=36.650E-12 Bv=13.820 Ibv=19.985E-3 tt=252.47E-9 Nbv=0.05 Tbv1=0.00068 Nbvl=0.4 Ibvl=1.5000E-5 Vpk=13 mfg=Rohm type=Zener)
 .model PTZ15B D(Is=3.8211E-15 N=1.0248 Rs=20.518E-3 Ikf=.76979 Cjo=283.29E-12 M=.38849 Vj=.80937 Isr=26.473E-12 Bv=15.350 Ibv=19.985E-3 tt=333.26E-9 Nbv=0.05 Tbv1=0.00072 Nbvl=0.4 Ibvl=1.5000E-5 Vpk=15 mfg=Rohm type=Zener)
 .model PTZ16B D(Is=3.9175E-15 N=1.0252 Rs=15.777E-3 Ikf=.75576 Cjo=230.36E-12 M=.339 Vj=.80022 Isr=44.928E-12 Bv=16.860 Ibv=20.000E-3 tt=377.99E-9 Nbv=0.05 Tbv1=0.00075 Vpk=16 mfg=Rohm type=Zener)
-.model PTZ18B D(Is=4.5011E-15 N=1.0308 Rs=13.124E-3 Ikf=.69669  Cjo=218.84E-12 M=.35823 Vj=.83364 Isr=35.166E-12 Bv=19 Ibv=20.000E-3 tt=434.25E-9 Nbv=0.05 Tbv1=0.00067 Vpk=18 mfg=Rohm type=Zener)
+.model PTZ18B D(Is=4.5011E-15 N=1.0308 Rs=13.124E-3 Ikf=.69669 Cjo=218.84E-12 M=.35823 Vj=.83364 Isr=35.166E-12 Bv=19 Ibv=20.000E-3 tt=434.25E-9 Nbv=0.05 Tbv1=0.00067 Vpk=18 mfg=Rohm type=Zener)
 .model PTZ20B D(Is=4.7057E-15 N=1.0322 Rs=15.226E-3 Ikf=.64872 Cjo=197.80E-12 M=.34995 Vj=.8302 Isr=31.006E-12 Bv=20.820 Ibv=20.000E-3 tt=538.13E-9 Nbv=0.05 Tbv1=0.00074 Vpk=20 mfg=Rohm type=Zener)
 .model PTZ22B D(Is=6.3336E-15 N=1.0394 Rs=11.998E-3 Ikf=.62572 Cjo=181.19E-12 M=.37072 Vj=.82527 Isr=32.969E-12 Bv=23.850 Ibv=10.000E-3 tt=523.70E-9 Nbv=0.05 Tbv1=0.00074 Vpk=22 mfg=Rohm type=Zener)
 .model PTZ24B D(Is=5.6942E-15 N=1.0353 Rs=7.2332E-3 Ikf=.53216 Cjo=158.28E-12 M=.32594 Vj=.81773 Isr=38.915E-12 Bv=25.310 Ibv=10.000E-3 tt=509.27E-9 Nbv=0.05 Tbv1=0.0008 Vpk=24 mfg=Rohm type=Zener)
 .model PTZ27B D(Is=5.4090E-15 N=1.0328 Rs=8.4497E-3 Ikf=.54146 Cjo=145.86E-12 M=.35006 Vj=.80706 Isr=30.905E-12 Bv=28.700 Ibv=10.000E-3 tt=562.65E-9 Nbv=0.05 Tbv1=0.00059 Vpk=27 mfg=Rohm type=Zener)
 .model PTZ30B D(Is=5.3639E-15 N=1.0321 Rs=11.693E-3 Ikf=.50376 Cjo=132.61E-12 M=.35521 Vj=.81557 Isr=24.732E-12 Bv=31.570 Ibv=10.000E-3 tt=637.67E-9 Nbv=0.05 Tbv1=0.00083 Vpk=30 mfg=Rohm type=Zener)
-.model PTZ33B D(Is=11.155E-15 N=1.0554 Rs=9.5085E-3 Ikf=.49319  Cjo=129.36E-12 M=.34715 Vj=.81627 Isr=31.652E-12 Bv=34.950 Ibv=10.000E-3 tt=605.93E-9 Nbv=0.05 Tbv1=0.00085 Vpk=33 mfg=Rohm type=Zener)
+.model PTZ33B D(Is=11.155E-15 N=1.0554 Rs=9.5085E-3 Ikf=.49319 Cjo=129.36E-12 M=.34715 Vj=.81627 Isr=31.652E-12 Bv=34.950 Ibv=10.000E-3 tt=605.93E-9 Nbv=0.05 Tbv1=0.00085 Vpk=33 mfg=Rohm type=Zener)
 .model PTZ36B D(Is=22.137E-15 N=1.0777 Rs=4.7841E-3 Ikf=.4052 Cjo=126.75E-12 M=.38653 Vj=.85698 Isr=22.958E-12 Bv=39.240 Ibv=10.000E-3 tt=565.54E-9 Nbv=0.05 Tbv1=0.00087 Vpk=36 mfg=Rohm type=Zener)
 .model UMZ6_2K D(Is=235.19E-18 N=1.0349 Rs=.20667 Ikf=5.7211 Cjo=21.599E-12 M=.35129 Vj=.80122 Isr=79.860E-12 Bv=6.1950 Ibv=4.9900E-3 tt=180.34E-9 Nbv=0.3 Tbv1=0.0004 Nbvl=2 Ibvl=1.0000E-5 Vpk=6.2 mfg=Rohm type=Zener)
 .model UMZ6_8K D(Is=153.73E-18 N=1.0159 Rs=.1572 Ikf=.15869 Cjo=18.108E-12 M=.35314 Vj=.80037 Isr=66.267E-12 Bv=6.7900 Ibv=4.9900E-3 tt=216.40E-9 Nbv=0.3 Tbv1=0.00048 Nbvl=1 Ibvl=1.0000E-5 Vpk=6.8 mfg=Rohm type=Zener)

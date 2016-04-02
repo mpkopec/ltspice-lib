@@ -6,7 +6,7 @@ WINDOW 3 0 23 Center 0
 WINDOW 0 56 -111 Bottom 0
 SYMATTR Value LTC1968
 SYMATTR Prefix X
-SYMATTR SpiceModel LTC1968.lib
+SYMATTR SpiceModel LTC1966.lib
 SYMATTR Value2 LTC1968
 SYMATTR Description Precision Wide Bandwidth RMS-to-DC Converter
 PIN 0 112 BOTTOM 8
